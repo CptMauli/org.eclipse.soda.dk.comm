@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.5.3
+Bundle-Activator: org.eclipse.soda.dk.comm.bundle.Activator
+Bundle-Copyright: %bundle.copyright
+Bundle-Description: %bundle.description
+Bundle-Name: %bundle.name
+Bundle-SymbolicName: org.eclipse.soda.dk.comm
+Bundle-Vendor: %bundle.vendor
+Bundle-Version: 1.0.0.qualifier
+Created-By: 2.1 (IBM Corporation)
+Export-Package: javax.comm;specification-version="1.0.0",
+ org.eclipse.soda.dk.comm,
+ org.eclipse.soda.dk.comm.bundle,
+ org.eclipse.soda.dk.comm.internal;x-internal:=true
+Import-Package: org.osgi.framework;specification-version="1.3.0"
+Provide-Package: javax.comm
