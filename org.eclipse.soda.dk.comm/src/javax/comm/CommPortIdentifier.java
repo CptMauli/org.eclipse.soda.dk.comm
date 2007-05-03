@@ -82,8 +82,7 @@ public class CommPortIdentifier {
 	 * Obtains the <CODE>CommPortIdentifier</CODE> object corresponding to a
 	 * port that has already been opened by the application.
 	 * 
-	 * @param port
-	 *            a CommPort object obtained from a previous open
+	 * @param port a CommPort object obtained from a previous open
 	 * @return a CommPortIdentifier object
 	 * @exception NoSuchPortException
 	 *                if the port object is invalid
@@ -97,8 +96,7 @@ public class CommPortIdentifier {
 	 * The port name may have been stored in persistent storage by the
 	 * application.
 	 * 
-	 * @param <CODE>
-	 *            portName</CODE> name of the port to open
+	 * @param portName name of the port to open
 	 * @return a <CODE>CommPortIdentifier</CODE> object
 	 * @exception NoSuchPortException
 	 *                if the port does not exist
@@ -185,12 +183,9 @@ public class CommPortIdentifier {
 	/**
 	 * Adds <CODE>portName</CODE> to the list of ports.
 	 * 
-	 * @param portName
-	 *            The name of the port being added
-	 * @param portType
-	 *            The type of the port being added
-	 * @param driver
-	 *            The driver representing the port being added
+	 * @param portName The name of the port being added
+	 * @param portType The type of the port being added
+	 * @param commDriver   The driver representing the port being added
 	 * @see javax.comm.CommDriver
 	 * @since CommAPI 1.1
 	 */
@@ -217,8 +212,7 @@ public class CommPortIdentifier {
 	 * using <CODE>addPortOwnershipListener</CODE> will be called with one of
 	 * the above events.
 	 * 
-	 * @param listener
-	 *            a <CODE>CommPortOwnershipListener</CODE> callback object
+	 * @param listener a <CODE>CommPortOwnershipListener</CODE> callback object
 	 */
 	public void addPortOwnershipListener(final CommPortOwnershipListener listener) {
 		if ((listener != null) && !this.listeners.contains(listener)) {
@@ -256,7 +250,7 @@ public class CommPortIdentifier {
 	 * Opens the communications port using a <CODE>FileDescriptor</CODE>
 	 * object on platforms that support this technique.
 	 * 
-	 * @param fd
+	 * @param fileDescriptor
 	 *            The <CODE>FileDescriptor</CODE> object used to build a
 	 *            <CODE>CommPort</CODE>.
 	 * @return a <CODE>CommPort</CODE> object.
