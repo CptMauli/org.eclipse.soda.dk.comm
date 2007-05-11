@@ -14,7 +14,7 @@ import java.util.*;
 
 /**
  * @author IBM
- * @version 1.0.0
+ * @version 1.1.0
  */
 public interface ParallelPortEventListener extends EventListener {
 	/**

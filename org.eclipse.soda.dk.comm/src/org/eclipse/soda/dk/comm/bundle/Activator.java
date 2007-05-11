@@ -16,14 +16,14 @@ import org.osgi.framework.BundleContext;
 
 /**
  * @author IBM
- * @version 1.0.0
+ * @version 1.1.0
  */
 public class Activator implements BundleActivator {
 	/**
 	 * Parse bundle list with the specified raw list and bundle file parameters and return the String result.
+	 * @return	Results of the parse bundle list (<code>String</code>) value.
 	 * @param	rawList	The raw list (<code>String</code>) parameter.
 	 * @param	bundleFile	The bundle file (<code>String</code>) parameter.
-	 * @return	Results of the parse bundle list (<code>String</code>) value.
 	 */
 	private String parseBundleList(final String rawList, final String bundleFile) {
 		String result = null;
@@ -42,8 +42,8 @@ public class Activator implements BundleActivator {
 
 	/**
 	 * Parse install with the specified raw install parameter and return the String result.
-	 * @param	rawInstall	The raw install (<code>String</code>) parameter.
 	 * @return	Results of the parse install (<code>String</code>) value.
+	 * @param	rawInstall	The raw install (<code>String</code>) parameter.
 	 */
 	private String parseInstall(final String rawInstall) {
 		String result;
@@ -57,8 +57,8 @@ public class Activator implements BundleActivator {
 
 	/**
 	 * Parse loc with the specified raw loc parameter and return the String result.
-	 * @param	rawLoc	The raw loc (<code>String</code>) parameter.
 	 * @return	Results of the parse loc (<code>String</code>) value.
+	 * @param	rawLoc	The raw loc (<code>String</code>) parameter.
 	 */
 	private String parseLoc(final String rawLoc) {
 		String result;
@@ -73,7 +73,6 @@ public class Activator implements BundleActivator {
 	/**
 	 * Start with the specified arg0 parameter.
 	 * @param	arg0	The arg0 (<code>BundleContext</code>) parameter.
-	 * @throws	Exception.
 	 */
 	public void start(final BundleContext arg0) throws Exception {
 		String bundle_loc = arg0.getBundle().getLocation();
@@ -98,7 +97,6 @@ public class Activator implements BundleActivator {
 	/**
 	 * Stop with the specified arg0 parameter.
 	 * @param	arg0	The arg0 (<code>BundleContext</code>) parameter.
-	 * @throws	Exception.
 	 */
 	public void stop(final BundleContext arg0) throws Exception {
 	}

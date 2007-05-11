@@ -14,7 +14,7 @@ import java.util.*;
 
 /**
  * @author IBM
- * @version 1.0.0
+ * @version 1.1.0
  */
 public abstract class SerialPort extends CommPort {
 	/**
@@ -105,14 +105,14 @@ public abstract class SerialPort extends CommPort {
 	/**
 	 * Constructs an instance of this class.
 	 */
-	public SerialPort() {
+	protected SerialPort() {
 		super();
 	}
 
 	/**
 	 * Add event listener with the specified lsnr parameter.
-	 * @param	lsnr	The lsnr (<code>SerialPortEventListener</code>) parameter.
 	 * @throws	TooManyListenersException Too Many Listeners Exception.
+	 * @param	lsnr	The lsnr (<code>SerialPortEventListener</code>) parameter.
 	 * @see		#removeEventListener()
 	 */
 	public abstract void addEventListener(final SerialPortEventListener lsnr) throws TooManyListenersException;
@@ -269,8 +269,8 @@ public abstract class SerialPort extends CommPort {
 
 	/**
 	 * Sets the flow control mode value.
-	 * @param	flowcontrol	The flowcontrol (<code>int</code>) parameter.
 	 * @throws	UnsupportedCommOperationException Unsupported Comm Operation Exception.
+	 * @param	flowcontrol	The flowcontrol (<code>int</code>) parameter.
 	 * @see		#getFlowControlMode()
 	 */
 	public abstract void setFlowControlMode(final int flowcontrol) throws UnsupportedCommOperationException;
@@ -291,11 +291,11 @@ public abstract class SerialPort extends CommPort {
 
 	/**
 	 * Set serial port params with the specified baudrate, data bits, stop bits and parity parameters.
+	 * @throws	UnsupportedCommOperationException Unsupported Comm Operation Exception.
 	 * @param	baudrate	The baudrate (<code>int</code>) parameter.
 	 * @param	dataBits	The data bits (<code>int</code>) parameter.
 	 * @param	stopBits	The stop bits (<code>int</code>) parameter.
 	 * @param	parity	The parity (<code>int</code>) parameter.
-	 * @throws	UnsupportedCommOperationException Unsupported Comm Operation Exception.
 	 */
 	public abstract void setSerialPortParams(final int baudrate, final int dataBits, final int stopBits, final int parity) throws UnsupportedCommOperationException;
 }

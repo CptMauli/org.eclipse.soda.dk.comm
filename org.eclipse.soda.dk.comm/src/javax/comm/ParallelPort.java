@@ -14,7 +14,7 @@ import java.util.*;
 
 /**
  * @author IBM
- * @version 1.0.0
+ * @version 1.1.0
  */
 public abstract class ParallelPort extends CommPort {
 	/**
@@ -50,14 +50,14 @@ public abstract class ParallelPort extends CommPort {
 	/**
 	 * Constructs an instance of this class.
 	 */
-	public ParallelPort() {
+	protected ParallelPort() {
 		super();
 	}
 
 	/**
 	 * Add event listener with the specified lsnr parameter.
-	 * @param	lsnr	The lsnr (<code>ParallelPortEventListener</code>) parameter.
 	 * @throws	TooManyListenersException Too Many Listeners Exception.
+	 * @param	lsnr	The lsnr (<code>ParallelPortEventListener</code>) parameter.
 	 * @see		#removeEventListener()
 	 */
 	public abstract void addEventListener(final ParallelPortEventListener lsnr) throws TooManyListenersException;
@@ -130,9 +130,9 @@ public abstract class ParallelPort extends CommPort {
 
 	/**
 	 * Sets the mode value.
-	 * @param	mode	The mode (<code>int</code>) parameter.
 	 * @return	The mode (<code>int</code>) value.
 	 * @throws	UnsupportedCommOperationException Unsupported Comm Operation Exception.
+	 * @param	mode	The mode (<code>int</code>) parameter.
 	 * @see		#getMode()
 	 */
 	public abstract int setMode(final int mode) throws UnsupportedCommOperationException;

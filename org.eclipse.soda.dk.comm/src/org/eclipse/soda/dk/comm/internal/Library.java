@@ -20,7 +20,7 @@ import java.util.zip.ZipInputStream;
 
 /**
  * @author IBM
- * @version 1.0.0
+ * @version 1.1.0
  */
 public class Library {
 	/**
@@ -104,6 +104,7 @@ public class Library {
 	 * Perform unzip with the specified input and output parameters.
 	 * @param	input	The input (<code>BufferedInputStream</code>) parameter.
 	 * @param	output	The output (<code>BufferedOutputStream</code>) parameter.
+	 * @throws	IOException.
 	 */
 	private static void performUnzip(final BufferedInputStream input, final BufferedOutputStream output) throws IOException {
 		int block_size = 4000;
@@ -134,6 +135,7 @@ public class Library {
 	 * @param	libpath	The libpath (<code>String</code>) parameter.
 	 * @param	libname	The libname (<code>String</code>) parameter.
 	 * @param	url	The url (<code>String</code>) parameter.
+	 * @throws	IOException.
 	 */
 	private static void unzipLib_http(final String javalibpath, final String libpath, final String libname, final String url) throws IOException {
 		/*
@@ -163,6 +165,7 @@ public class Library {
 	 * @param	libpath	The libpath (<code>String</code>) parameter.
 	 * @param	libname	The libname (<code>String</code>) parameter.
 	 * @param	jarname	The jarname (<code>String</code>) parameter.
+	 * @throws	IOException.
 	 */
 	private static void unzipLib_local(final String javalibpath, final String libpath, final String libname, final String jarname) throws IOException {
 		/*		

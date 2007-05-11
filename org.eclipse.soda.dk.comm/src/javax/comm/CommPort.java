@@ -14,7 +14,7 @@ import java.io.*;
 
 /**
  * @author IBM
- * @version 1.0.0
+ * @version 1.1.0
  */
 public abstract class CommPort extends Object {
 	/**
@@ -59,16 +59,16 @@ public abstract class CommPort extends Object {
 
 	/**
 	 * Enable receive framing with the specified framing byte parameter.
-	 * @param	framingByte	The framing byte (<code>int</code>) parameter.
 	 * @throws	UnsupportedCommOperationException Unsupported Comm Operation Exception.
+	 * @param	framingByte	The framing byte (<code>int</code>) parameter.
 	 * @see		#disableReceiveFraming()
 	 */
 	public abstract void enableReceiveFraming(final int framingByte) throws UnsupportedCommOperationException;
 
 	/**
 	 * Enable receive threshold with the specified thresh parameter.
-	 * @param	thresh	The thresh (<code>int</code>) parameter.
 	 * @throws	UnsupportedCommOperationException Unsupported Comm Operation Exception.
+	 * @param	thresh	The thresh (<code>int</code>) parameter.
 	 * @see		#disableReceiveThreshold()
 	 * @see		#getReceiveThreshold()
 	 */
@@ -76,8 +76,8 @@ public abstract class CommPort extends Object {
 
 	/**
 	 * Enable receive timeout with the specified rcv timeout parameter.
-	 * @param	rcvTimeout	The rcv timeout (<code>int</code>) parameter.
 	 * @throws	UnsupportedCommOperationException Unsupported Comm Operation Exception.
+	 * @param	rcvTimeout	The rcv timeout (<code>int</code>) parameter.
 	 * @see		#disableReceiveTimeout()
 	 * @see		#getReceiveTimeout()
 	 */
@@ -93,7 +93,6 @@ public abstract class CommPort extends Object {
 	/**
 	 * Gets the input stream value.
 	 * @return	The input stream (<code>InputStream</code>) value.
-	 * @throws	IOException.
 	 */
 	public abstract InputStream getInputStream() throws IOException;
 
@@ -115,7 +114,6 @@ public abstract class CommPort extends Object {
 	/**
 	 * Gets the output stream value.
 	 * @return	The output stream (<code>OutputStream</code>) value.
-	 * @throws	IOException.
 	 */
 	public abstract OutputStream getOutputStream() throws IOException;
 

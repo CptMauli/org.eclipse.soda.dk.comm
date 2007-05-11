@@ -18,7 +18,7 @@ import org.eclipse.soda.dk.comm.internal.Library;
 
 /**
  * @author IBM
- * @version 1.0.0
+ * @version 1.1.0
  */
 public class NSCommDriver implements CommDriver {
 	static {
@@ -70,9 +70,9 @@ public class NSCommDriver implements CommDriver {
 
 	/**
 	 * Get comm port with the specified port name and port type parameters and return the CommPort result.
+	 * @return	Results of the get comm port (<code>CommPort</code>) value.
 	 * @param	portName	The port name (<code>String</code>) parameter.
 	 * @param	portType	The port type (<code>int</code>) parameter.
-	 * @return	Results of the get comm port (<code>CommPort</code>) value.
 	 */
 	public CommPort getCommPort(final String portName, final int portType) {
 		CommPort port = null;
@@ -104,8 +104,8 @@ public class NSCommDriver implements CommDriver {
 
 	/**
 	 * Get next dle with the specified dle parameter and return the DeviceListEntry result.
-	 * @param	dle	The dle (<code>DeviceListEntry</code>) parameter.
 	 * @return	Results of the get next dle (<code>DeviceListEntry</code>) value.
+	 * @param	dle	The dle (<code>DeviceListEntry</code>) parameter.
 	 */
 	DeviceListEntry getNextDLE(final DeviceListEntry dle) {
 		DeviceListEntry cur = this.devicelist.headEntry;
