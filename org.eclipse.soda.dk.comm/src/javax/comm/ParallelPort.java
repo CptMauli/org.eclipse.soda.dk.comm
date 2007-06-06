@@ -56,16 +56,16 @@ public abstract class ParallelPort extends CommPort {
 
 	/**
 	 * Add event listener with the specified lsnr parameter.
-	 * @throws	TooManyListenersException Too Many Listeners Exception.
-	 * @param	lsnr	The lsnr (<code>ParallelPortEventListener</code>) parameter.
-	 * @see		#removeEventListener()
+	 * @param lsnr	The lsnr (<code>ParallelPortEventListener</code>) parameter.
+	 * @throws TooManyListenersException Too Many Listeners Exception.
+	 * @see #removeEventListener()
 	 */
 	public abstract void addEventListener(final ParallelPortEventListener lsnr) throws TooManyListenersException;
 
 	/**
 	 * Gets the mode (int) value.
 	 * @return	The mode (<code>int</code>) value.
-	 * @see		#setMode(int)
+	 * @see #setMode(int)
 	 */
 	public abstract int getMode();
 
@@ -107,19 +107,19 @@ public abstract class ParallelPort extends CommPort {
 
 	/**
 	 * Notify on buffer with the specified notify parameter.
-	 * @param	notify	The notify (<code>boolean</code>) parameter.
+	 * @param notify	The notify (<code>boolean</code>) parameter.
 	 */
 	public abstract void notifyOnBuffer(final boolean notify);
 
 	/**
 	 * Notify on error with the specified notify parameter.
-	 * @param	notify	The notify (<code>boolean</code>) parameter.
+	 * @param notify	The notify (<code>boolean</code>) parameter.
 	 */
 	public abstract void notifyOnError(final boolean notify);
 
 	/**
 	 * Remove event listener.
-	 * @see		#addEventListener(ParallelPortEventListener)
+	 * @see #addEventListener(ParallelPortEventListener)
 	 */
 	public abstract void removeEventListener();
 
@@ -130,10 +130,10 @@ public abstract class ParallelPort extends CommPort {
 
 	/**
 	 * Sets the mode value.
+	 * @param mode	The mode (<code>int</code>) parameter.
 	 * @return	The mode (<code>int</code>) value.
-	 * @throws	UnsupportedCommOperationException Unsupported Comm Operation Exception.
-	 * @param	mode	The mode (<code>int</code>) parameter.
-	 * @see		#getMode()
+	 * @throws UnsupportedCommOperationException Unsupported Comm Operation Exception.
+	 * @see #getMode()
 	 */
 	public abstract int setMode(final int mode) throws UnsupportedCommOperationException;
 

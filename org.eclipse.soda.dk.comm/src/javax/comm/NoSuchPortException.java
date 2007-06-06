@@ -22,7 +22,7 @@ public class NoSuchPortException extends Exception {
 
 	/**
 	 * Constructs an instance of this class.
-	 * @see		#NoSuchPortException(String)
+	 * @see #NoSuchPortException(String)
 	 */
 	public NoSuchPortException() {
 		super();
@@ -30,8 +30,8 @@ public class NoSuchPortException extends Exception {
 
 	/**
 	 * Constructs an instance of this class from the specified msg parameter.
-	 * @param	msg	The msg (<code>String</code>) parameter.
-	 * @see		#NoSuchPortException()
+	 * @param msg	The msg (<code>String</code>) parameter.
+	 * @see #NoSuchPortException()
 	 */
 	public NoSuchPortException(final String msg) {
 		super(msg);

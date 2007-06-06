@@ -19,7 +19,7 @@ import java.util.*;
 public interface ParallelPortEventListener extends EventListener {
 	/**
 	 * Parallel event with the specified ev parameter.
-	 * @param	ev	The ev (<code>ParallelPortEvent</code>) parameter.
+	 * @param ev	The ev (<code>ParallelPortEvent</code>) parameter.
 	 */
 	public abstract void parallelEvent(final ParallelPortEvent ev);
 }

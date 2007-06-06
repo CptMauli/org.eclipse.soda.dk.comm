@@ -19,7 +19,7 @@ import java.util.*;
 public interface SerialPortEventListener extends EventListener {
 	/**
 	 * Serial event with the specified ev parameter.
-	 * @param	ev	The ev (<code>SerialPortEvent</code>) parameter.
+	 * @param ev	The ev (<code>SerialPortEvent</code>) parameter.
 	 */
 	public abstract void serialEvent(final SerialPortEvent ev);
 }

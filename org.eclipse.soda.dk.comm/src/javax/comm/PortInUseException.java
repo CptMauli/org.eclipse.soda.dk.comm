@@ -27,7 +27,7 @@ public class PortInUseException extends Exception {
 
 	/**
 	 * Constructs an instance of this class from the specified co parameter.
-	 * @param	co	The co (<code>String</code>) parameter.
+	 * @param co	The co (<code>String</code>) parameter.
 	 */
 	public PortInUseException(final String co) {
 		this.currentOwner = co;

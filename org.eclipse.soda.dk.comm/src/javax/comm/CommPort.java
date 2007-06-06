@@ -39,60 +39,61 @@ public abstract class CommPort extends Object {
 
 	/**
 	 * Disable receive framing.
-	 * @see		#enableReceiveFraming(int)
+	 * @see #enableReceiveFraming(int)
 	 */
 	public abstract void disableReceiveFraming();
 
 	/**
 	 * Disable receive threshold.
-	 * @see		#enableReceiveThreshold(int)
-	 * @see		#getReceiveThreshold()
+	 * @see #enableReceiveThreshold(int)
+	 * @see #getReceiveThreshold()
 	 */
 	public abstract void disableReceiveThreshold();
 
 	/**
 	 * Disable receive timeout.
-	 * @see		#enableReceiveTimeout(int)
-	 * @see		#getReceiveTimeout()
+	 * @see #enableReceiveTimeout(int)
+	 * @see #getReceiveTimeout()
 	 */
 	public abstract void disableReceiveTimeout();
 
 	/**
 	 * Enable receive framing with the specified framing byte parameter.
-	 * @throws	UnsupportedCommOperationException Unsupported Comm Operation Exception.
-	 * @param	framingByte	The framing byte (<code>int</code>) parameter.
-	 * @see		#disableReceiveFraming()
+	 * @param framingByte	The framing byte (<code>int</code>) parameter.
+	 * @throws UnsupportedCommOperationException Unsupported Comm Operation Exception.
+	 * @see #disableReceiveFraming()
 	 */
 	public abstract void enableReceiveFraming(final int framingByte) throws UnsupportedCommOperationException;
 
 	/**
 	 * Enable receive threshold with the specified thresh parameter.
-	 * @throws	UnsupportedCommOperationException Unsupported Comm Operation Exception.
-	 * @param	thresh	The thresh (<code>int</code>) parameter.
-	 * @see		#disableReceiveThreshold()
-	 * @see		#getReceiveThreshold()
+	 * @param thresh	The thresh (<code>int</code>) parameter.
+	 * @throws UnsupportedCommOperationException Unsupported Comm Operation Exception.
+	 * @see #disableReceiveThreshold()
+	 * @see #getReceiveThreshold()
 	 */
 	public abstract void enableReceiveThreshold(final int thresh) throws UnsupportedCommOperationException;
 
 	/**
 	 * Enable receive timeout with the specified rcv timeout parameter.
-	 * @throws	UnsupportedCommOperationException Unsupported Comm Operation Exception.
-	 * @param	rcvTimeout	The rcv timeout (<code>int</code>) parameter.
-	 * @see		#disableReceiveTimeout()
-	 * @see		#getReceiveTimeout()
+	 * @param rcvTimeout	The rcv timeout (<code>int</code>) parameter.
+	 * @throws UnsupportedCommOperationException Unsupported Comm Operation Exception.
+	 * @see #disableReceiveTimeout()
+	 * @see #getReceiveTimeout()
 	 */
 	public abstract void enableReceiveTimeout(final int rcvTimeout) throws UnsupportedCommOperationException;
 
 	/**
 	 * Gets the input buffer size (int) value.
 	 * @return	The input buffer size (<code>int</code>) value.
-	 * @see		#setInputBufferSize(int)
+	 * @see #setInputBufferSize(int)
 	 */
 	public abstract int getInputBufferSize();
 
 	/**
 	 * Gets the input stream value.
 	 * @return	The input stream (<code>InputStream</code>) value.
+	 * @throws IOException IOException.
 	 */
 	public abstract InputStream getInputStream() throws IOException;
 
@@ -107,13 +108,14 @@ public abstract class CommPort extends Object {
 	/**
 	 * Gets the output buffer size (int) value.
 	 * @return	The output buffer size (<code>int</code>) value.
-	 * @see		#setOutputBufferSize(int)
+	 * @see #setOutputBufferSize(int)
 	 */
 	public abstract int getOutputBufferSize();
 
 	/**
 	 * Gets the output stream value.
 	 * @return	The output stream (<code>OutputStream</code>) value.
+	 * @throws IOException IOException.
 	 */
 	public abstract OutputStream getOutputStream() throws IOException;
 
@@ -126,16 +128,16 @@ public abstract class CommPort extends Object {
 	/**
 	 * Gets the receive threshold (int) value.
 	 * @return	The receive threshold (<code>int</code>) value.
-	 * @see		#disableReceiveThreshold()
-	 * @see		#enableReceiveThreshold(int)
+	 * @see #disableReceiveThreshold()
+	 * @see #enableReceiveThreshold(int)
 	 */
 	public abstract int getReceiveThreshold();
 
 	/**
 	 * Gets the receive timeout (int) value.
 	 * @return	The receive timeout (<code>int</code>) value.
-	 * @see		#disableReceiveTimeout()
-	 * @see		#enableReceiveTimeout(int)
+	 * @see #disableReceiveTimeout()
+	 * @see #enableReceiveTimeout(int)
 	 */
 	public abstract int getReceiveTimeout();
 
@@ -159,15 +161,15 @@ public abstract class CommPort extends Object {
 
 	/**
 	 * Sets the input buffer size value.
-	 * @param	size	The size (<code>int</code>) parameter.
-	 * @see		#getInputBufferSize()
+	 * @param size	The size (<code>int</code>) parameter.
+	 * @see #getInputBufferSize()
 	 */
 	public abstract void setInputBufferSize(final int size);
 
 	/**
 	 * Sets the output buffer size value.
-	 * @param	size	The size (<code>int</code>) parameter.
-	 * @see		#getOutputBufferSize()
+	 * @param size	The size (<code>int</code>) parameter.
+	 * @see #getOutputBufferSize()
 	 */
 	public abstract void setOutputBufferSize(final int size);
 

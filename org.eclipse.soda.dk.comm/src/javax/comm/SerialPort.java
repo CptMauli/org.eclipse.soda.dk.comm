@@ -111,9 +111,9 @@ public abstract class SerialPort extends CommPort {
 
 	/**
 	 * Add event listener with the specified lsnr parameter.
-	 * @throws	TooManyListenersException Too Many Listeners Exception.
-	 * @param	lsnr	The lsnr (<code>SerialPortEventListener</code>) parameter.
-	 * @see		#removeEventListener()
+	 * @param lsnr	The lsnr (<code>SerialPortEventListener</code>) parameter.
+	 * @throws TooManyListenersException Too Many Listeners Exception.
+	 * @see #removeEventListener()
 	 */
 	public abstract void addEventListener(final SerialPortEventListener lsnr) throws TooManyListenersException;
 
@@ -132,7 +132,7 @@ public abstract class SerialPort extends CommPort {
 	/**
 	 * Gets the flow control mode (int) value.
 	 * @return	The flow control mode (<code>int</code>) value.
-	 * @see		#setFlowControlMode(int)
+	 * @see #setFlowControlMode(int)
 	 */
 	public abstract int getFlowControlMode();
 
@@ -157,21 +157,21 @@ public abstract class SerialPort extends CommPort {
 	/**
 	 * Gets the cts (boolean) value.
 	 * @return	The cts (<code>boolean</code>) value.
-	 * @see		#notifyOnCTS(boolean)
+	 * @see #notifyOnCTS(boolean)
 	 */
 	public abstract boolean isCTS();
 
 	/**
 	 * Gets the dsr (boolean) value.
 	 * @return	The dsr (<code>boolean</code>) value.
-	 * @see		#notifyOnDSR(boolean)
+	 * @see #notifyOnDSR(boolean)
 	 */
 	public abstract boolean isDSR();
 
 	/**
 	 * Gets the dtr (boolean) value.
 	 * @return	The dtr (<code>boolean</code>) value.
-	 * @see		#setDTR(boolean)
+	 * @see #setDTR(boolean)
 	 */
 	public abstract boolean isDTR();
 
@@ -184,118 +184,118 @@ public abstract class SerialPort extends CommPort {
 	/**
 	 * Gets the rts (boolean) value.
 	 * @return	The rts (<code>boolean</code>) value.
-	 * @see		#setRTS(boolean)
+	 * @see #setRTS(boolean)
 	 */
 	public abstract boolean isRTS();
 
 	/**
 	 * Notify on break interrupt with the specified enable parameter.
-	 * @param	enable	The enable (<code>boolean</code>) parameter.
+	 * @param enable	The enable (<code>boolean</code>) parameter.
 	 */
 	public abstract void notifyOnBreakInterrupt(final boolean enable);
 
 	/**
 	 * Notify on cts with the specified enable parameter.
-	 * @param	enable	The enable (<code>boolean</code>) parameter.
+	 * @param enable	The enable (<code>boolean</code>) parameter.
 	 */
 	public abstract void notifyOnCTS(final boolean enable);
 
 	/**
 	 * Notify on carrier detect with the specified enable parameter.
-	 * @param	enable	The enable (<code>boolean</code>) parameter.
+	 * @param enable	The enable (<code>boolean</code>) parameter.
 	 */
 	public abstract void notifyOnCarrierDetect(final boolean enable);
 
 	/**
 	 * Notify on dsr with the specified enable parameter.
-	 * @param	enable	The enable (<code>boolean</code>) parameter.
+	 * @param enable	The enable (<code>boolean</code>) parameter.
 	 */
 	public abstract void notifyOnDSR(final boolean enable);
 
 	/**
 	 * Notify on data available with the specified enable parameter.
-	 * @param	enable	The enable (<code>boolean</code>) parameter.
+	 * @param enable	The enable (<code>boolean</code>) parameter.
 	 */
 	public abstract void notifyOnDataAvailable(final boolean enable);
 
 	/**
 	 * Notify on framing error with the specified enable parameter.
-	 * @param	enable	The enable (<code>boolean</code>) parameter.
+	 * @param enable	The enable (<code>boolean</code>) parameter.
 	 */
 	public abstract void notifyOnFramingError(final boolean enable);
 
 	/**
 	 * Notify on output empty with the specified enable parameter.
-	 * @param	enable	The enable (<code>boolean</code>) parameter.
+	 * @param enable	The enable (<code>boolean</code>) parameter.
 	 */
 	public abstract void notifyOnOutputEmpty(final boolean enable);
 
 	/**
 	 * Notify on overrun error with the specified enable parameter.
-	 * @param	enable	The enable (<code>boolean</code>) parameter.
+	 * @param enable	The enable (<code>boolean</code>) parameter.
 	 */
 	public abstract void notifyOnOverrunError(final boolean enable);
 
 	/**
 	 * Notify on parity error with the specified enable parameter.
-	 * @param	enable	The enable (<code>boolean</code>) parameter.
+	 * @param enable	The enable (<code>boolean</code>) parameter.
 	 */
 	public abstract void notifyOnParityError(final boolean enable);
 
 	/**
 	 * Notify on ring indicator with the specified enable parameter.
-	 * @param	enable	The enable (<code>boolean</code>) parameter.
+	 * @param enable	The enable (<code>boolean</code>) parameter.
 	 */
 	public abstract void notifyOnRingIndicator(final boolean enable);
 
 	/**
 	 * Remove event listener.
-	 * @see		#addEventListener(SerialPortEventListener)
+	 * @see #addEventListener(SerialPortEventListener)
 	 */
 	public abstract void removeEventListener();
 
 	/**
 	 * Send break with the specified millis parameter.
-	 * @param	millis	The millis (<code>int</code>) parameter.
+	 * @param millis	The millis (<code>int</code>) parameter.
 	 */
 	public abstract void sendBreak(final int millis);
 
 	/**
 	 * Sets the dtr value.
-	 * @param	dtr	The dtr (<code>boolean</code>) parameter.
-	 * @see		#isDTR()
+	 * @param dtr	The dtr (<code>boolean</code>) parameter.
+	 * @see #isDTR()
 	 */
 	public abstract void setDTR(final boolean dtr);
 
 	/**
 	 * Sets the flow control mode value.
-	 * @throws	UnsupportedCommOperationException Unsupported Comm Operation Exception.
-	 * @param	flowcontrol	The flowcontrol (<code>int</code>) parameter.
-	 * @see		#getFlowControlMode()
+	 * @param flowcontrol	The flowcontrol (<code>int</code>) parameter.
+	 * @throws UnsupportedCommOperationException Unsupported Comm Operation Exception.
+	 * @see #getFlowControlMode()
 	 */
 	public abstract void setFlowControlMode(final int flowcontrol) throws UnsupportedCommOperationException;
 
 	/**
 	 * Sets the rts value.
-	 * @param	rts	The rts (<code>boolean</code>) parameter.
-	 * @see		#isRTS()
+	 * @param rts	The rts (<code>boolean</code>) parameter.
+	 * @see #isRTS()
 	 */
 	public abstract void setRTS(final boolean rts);
 
 	/**
 	 * Sets the rcv fifo trigger value.
-	 * @param	trigger	The trigger (<code>int</code>) parameter.
+	 * @param trigger	The trigger (<code>int</code>) parameter.
 	 */
 	public void setRcvFifoTrigger(final int trigger) {
 	}
 
 	/**
 	 * Set serial port params with the specified baudrate, data bits, stop bits and parity parameters.
-	 * @throws	UnsupportedCommOperationException Unsupported Comm Operation Exception.
-	 * @param	baudrate	The baudrate (<code>int</code>) parameter.
-	 * @param	dataBits	The data bits (<code>int</code>) parameter.
-	 * @param	stopBits	The stop bits (<code>int</code>) parameter.
-	 * @param	parity	The parity (<code>int</code>) parameter.
+	 * @param baudrate	The baudrate (<code>int</code>) parameter.
+	 * @param dataBits	The data bits (<code>int</code>) parameter.
+	 * @param stopBits	The stop bits (<code>int</code>) parameter.
+	 * @param parity	The parity (<code>int</code>) parameter.
+	 * @throws UnsupportedCommOperationException Unsupported Comm Operation Exception.
 	 */
 	public abstract void setSerialPortParams(final int baudrate, final int dataBits, final int stopBits, final int parity) throws UnsupportedCommOperationException;
 }

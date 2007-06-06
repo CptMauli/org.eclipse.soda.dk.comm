@@ -37,8 +37,8 @@ class SerialStatusEventThread extends Thread {
 
 	/**
 	 * Constructs an instance of this class from the specified fd and sp parameters.
-	 * @param	fd	The fd (<code>int</code>) parameter.
-	 * @param	sp	The sp (<code>NSSerialPort</code>) parameter.
+	 * @param fd	The fd (<code>int</code>) parameter.
+	 * @param sp	The sp (<code>NSSerialPort</code>) parameter.
 	 */
 	SerialStatusEventThread(final int fd, final NSSerialPort sp) {
 		this.fileDescriptor = fd;
@@ -56,7 +56,7 @@ class SerialStatusEventThread extends Thread {
 	/**
 	 * Gets the stop thread flag (int) value.
 	 * @return	The stop thread flag (<code>int</code>) value.
-	 * @see		#setStopThreadFlag(int)
+	 * @see #setStopThreadFlag(int)
 	 */
 	public int getStopThreadFlag() {
 		return this.stopThreadFlag;
@@ -64,7 +64,7 @@ class SerialStatusEventThread extends Thread {
 
 	/**
 	 * Monitor serial status nc with the specified fd parameter.
-	 * @param	fd	The fd (<code>int</code>) parameter.
+	 * @param fd	The fd (<code>int</code>) parameter.
 	 */
 	private native void monitorSerialStatusNC(final int fd);
 
@@ -77,8 +77,8 @@ class SerialStatusEventThread extends Thread {
 
 	/**
 	 * Sets the stop thread flag value.
-	 * @param	value	The value (<code>int</code>) parameter.
-	 * @see		#getStopThreadFlag()
+	 * @param value	The value (<code>int</code>) parameter.
+	 * @see #getStopThreadFlag()
 	 */
 	public void setStopThreadFlag(final int value) {
 		this.stopThreadFlag = value;

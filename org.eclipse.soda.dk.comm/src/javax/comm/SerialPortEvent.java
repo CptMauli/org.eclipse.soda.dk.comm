@@ -89,10 +89,10 @@ public class SerialPortEvent extends EventObject {
 
 	/**
 	 * Constructs an instance of this class from the specified srcport, eventtype, oldvalue and newvalue parameters.
-	 * @param	srcport	The srcport (<code>SerialPort</code>) parameter.
-	 * @param	eventtype	The eventtype (<code>int</code>) parameter.
-	 * @param	oldvalue	The oldvalue (<code>boolean</code>) parameter.
-	 * @param	newvalue	The newvalue (<code>boolean</code>) parameter.
+	 * @param srcport	The srcport (<code>SerialPort</code>) parameter.
+	 * @param eventtype	The eventtype (<code>int</code>) parameter.
+	 * @param oldvalue	The oldvalue (<code>boolean</code>) parameter.
+	 * @param newvalue	The newvalue (<code>boolean</code>) parameter.
 	 */
 	public SerialPortEvent(final SerialPort srcport, final int eventtype, final boolean oldvalue, final boolean newvalue) {
 		super(srcport);

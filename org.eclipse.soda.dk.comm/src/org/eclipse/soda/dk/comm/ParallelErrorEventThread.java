@@ -37,8 +37,8 @@ class ParallelErrorEventThread extends Thread {
 
 	/**
 	 * Constructs an instance of this class from the specified ifd and port parameters.
-	 * @param	ifd	The ifd (<code>int</code>) parameter.
-	 * @param	port	The port (<code>NSParallelPort</code>) parameter.
+	 * @param ifd	The ifd (<code>int</code>) parameter.
+	 * @param port	The port (<code>NSParallelPort</code>) parameter.
 	 */
 	ParallelErrorEventThread(final int ifd, final NSParallelPort port) {
 		this.fd = ifd;
@@ -56,7 +56,7 @@ class ParallelErrorEventThread extends Thread {
 	/**
 	 * Gets the stop thread flag (int) value.
 	 * @return	The stop thread flag (<code>int</code>) value.
-	 * @see		#setStopThreadFlag(int)
+	 * @see #setStopThreadFlag(int)
 	 */
 	public int getStopThreadFlag() {
 		return this.stopThreadFlag;
@@ -64,7 +64,7 @@ class ParallelErrorEventThread extends Thread {
 
 	/**
 	 * Monitor parallel error nc with the specified fd parameter.
-	 * @param	fd	The fd (<code>int</code>) parameter.
+	 * @param fd	The fd (<code>int</code>) parameter.
 	 */
 	private native void monitorParallelErrorNC(final int fd);
 
@@ -77,8 +77,8 @@ class ParallelErrorEventThread extends Thread {
 
 	/**
 	 * Sets the stop thread flag value.
-	 * @param	value	The value (<code>int</code>) parameter.
-	 * @see		#getStopThreadFlag()
+	 * @param value	The value (<code>int</code>) parameter.
+	 * @see #getStopThreadFlag()
 	 */
 	public void setStopThreadFlag(final int value) {
 		this.stopThreadFlag = value;

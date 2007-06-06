@@ -38,10 +38,10 @@ public class NSCommDriver implements CommDriver {
 
 	/**
 	 * Add device to list with the specified port name, port type, device name and sem id parameters.
-	 * @param	portName	The port name (<code>String</code>) parameter.
-	 * @param	portType	The port type (<code>int</code>) parameter.
-	 * @param	deviceName	The device name (<code>String</code>) parameter.
-	 * @param	semID	The sem id (<code>int</code>) parameter.
+	 * @param portName	The port name (<code>String</code>) parameter.
+	 * @param portType	The port type (<code>int</code>) parameter.
+	 * @param deviceName	The device name (<code>String</code>) parameter.
+	 * @param semID	The sem id (<code>int</code>) parameter.
 	 */
 	protected void addDeviceToList(final String portName, final int portType, final String deviceName, final int semID) {
 		DeviceListEntry cur = this.devicelist.headEntry;
@@ -70,9 +70,9 @@ public class NSCommDriver implements CommDriver {
 
 	/**
 	 * Get comm port with the specified port name and port type parameters and return the CommPort result.
+	 * @param portName	The port name (<code>String</code>) parameter.
+	 * @param portType	The port type (<code>int</code>) parameter.
 	 * @return	Results of the get comm port (<code>CommPort</code>) value.
-	 * @param	portName	The port name (<code>String</code>) parameter.
-	 * @param	portType	The port type (<code>int</code>) parameter.
 	 */
 	public CommPort getCommPort(final String portName, final int portType) {
 		CommPort port = null;
@@ -104,8 +104,8 @@ public class NSCommDriver implements CommDriver {
 
 	/**
 	 * Get next dle with the specified dle parameter and return the DeviceListEntry result.
+	 * @param dle	The dle (<code>DeviceListEntry</code>) parameter.
 	 * @return	Results of the get next dle (<code>DeviceListEntry</code>) value.
-	 * @param	dle	The dle (<code>DeviceListEntry</code>) parameter.
 	 */
 	DeviceListEntry getNextDLE(final DeviceListEntry dle) {
 		DeviceListEntry cur = this.devicelist.headEntry;

@@ -34,7 +34,7 @@ public interface CommPortOwnershipListener extends EventListener {
 
 	/**
 	 * Ownership change with the specified type parameter.
-	 * @param	type	The type (<code>int</code>) parameter.
+	 * @param type	The type (<code>int</code>) parameter.
 	 */
 	public abstract void ownershipChange(final int type);
 }

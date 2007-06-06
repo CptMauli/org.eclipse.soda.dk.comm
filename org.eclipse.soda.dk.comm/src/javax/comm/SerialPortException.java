@@ -22,7 +22,7 @@ public class SerialPortException extends Exception {
 
 	/**
 	 * Constructs an instance of this class from the specified msg parameter.
-	 * @param	msg	The msg (<code>String</code>) parameter.
+	 * @param msg	The msg (<code>String</code>) parameter.
 	 */
 	public SerialPortException(final String msg) {
 		super(msg);

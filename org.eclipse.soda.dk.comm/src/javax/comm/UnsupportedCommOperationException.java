@@ -22,7 +22,7 @@ public class UnsupportedCommOperationException extends Exception {
 
 	/**
 	 * Constructs an instance of this class.
-	 * @see		#UnsupportedCommOperationException(String)
+	 * @see #UnsupportedCommOperationException(String)
 	 */
 	public UnsupportedCommOperationException() {
 		super();
@@ -30,8 +30,8 @@ public class UnsupportedCommOperationException extends Exception {
 
 	/**
 	 * Constructs an instance of this class from the specified str parameter.
-	 * @param	str	The str (<code>String</code>) parameter.
-	 * @see		#UnsupportedCommOperationException()
+	 * @param str	The str (<code>String</code>) parameter.
+	 * @see #UnsupportedCommOperationException()
 	 */
 	public UnsupportedCommOperationException(final String str) {
 		super(str);
