@@ -325,9 +325,19 @@ class NSSerialPort extends SerialPort {
 	 * @throws TooManyListenersException Too Many Listeners Exception.
 	 * @see #removeEventListener()
 	 */
-	public synchronized void addEventListener(final SerialPortEventListener lstnr) throws TooManyListenersException {
+	public synchronized void addEventListener(final SerialPortEventListener lstnr) {
 		if (this.listener != null) {
-			throw new TooManyListenersException();
+			try {
+				final Class tooManyClass = Class.forName("java.util.TooManyListenersException");
+				if (tooManyClass != null) {
+					final Object exception = tooManyClass.getInterfaces();
+					if (exception instanceof Exception) {
+						throw (Exception)exception;
+					}
+				}
+			} catch ( final Exception exception) {
+			}
+			throw new RuntimeException("java.util.TooManyListenersException");
 		} else {
 			this.listener = lstnr;
 			// check all other related flags, all must be false
