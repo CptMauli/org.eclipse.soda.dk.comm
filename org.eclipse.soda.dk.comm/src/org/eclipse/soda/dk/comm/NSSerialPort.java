@@ -15,11 +15,10 @@ import java.io.*;
 import java.util.*;
 
 /**
- * An RS-232 serial communications port. SerialPort describes the low-level
- * interface to a serial communications port made available by the underlying
- * system. SerialPort defines the minimum required functionality for serial
- * communications ports.
- * 
+ * An RS-232 serial communications port. SerialPort describes the
+ * low-level interface to a serial communications port made
+ * available by the underlying system. SerialPort defines the
+ * minimum required functionality for serial communications ports.
  * @author IBM
  * @version 1.1.0
  */
@@ -162,8 +161,7 @@ class NSSerialPort extends SerialPort {
 	/**
 	 * Define the fd (FileDescriptor) field.
 	 */
-	FileDescriptor FD = null; // FileDescriptor for the open device for which
-								// buffers can be built upon
+	FileDescriptor FD = null; // FileDescriptor for the open device for which buffers can be built upon
 
 	/**
 	 * Define the ins (NSDeviceInputStream) field.
@@ -287,13 +285,9 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Constructor
-	 * 
-	 * @param portName
-	 *            The port name (<code>String</code>) parameter.
-	 * @param driver
-	 *            The driver (<code>NSCommDriver</code>) parameter.
-	 * @throws IOException
-	 *             IOException.
+	 * @param portName The port name (<code>String</code>) parameter.
+	 * @param driver The driver (<code>NSCommDriver</code>) parameter.
+	 * @throws IOException IOException.
 	 */
 	public NSSerialPort(final String portName, final NSCommDriver driver) throws IOException {
 		/* caller wants port portName */
@@ -304,20 +298,14 @@ class NSSerialPort extends SerialPort {
 		// look for portName in DeviceList
 		for (DeviceListEntry cur = this.cd.getFirstDLE(); cur != null; cur = this.cd.getNextDLE(cur)) {
 			if (cur.logicalName.equals(portName)) {
-				/*
-				 * found the portName in list, attempt to open it using native
-				 * method.
-				 */
+				/* found the portName in list, attempt to open it using native method. */
 				if ((this.fd == -1) || !cur.opened) {
 					if ((this.fd = openDeviceNC(cur.physicalName, cur.semID)) == -1) {
 						// file descriptor is NOT valid, throw an Exception
 						throw new IOException();
 					} else {
 						/* Got a good file descriptor. */
-						/*
-						 * keep a copy of the DeviceListEntry where you found
-						 * the portName
-						 */
+						/* keep a copy of the DeviceListEntry where you found the portName */
 						/* get a FileDescriptor object */
 						/* turn opened ON */
 						this.dle = cur;
@@ -333,29 +321,13 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Add event listener with the specified lstnr parameter.
-	 * 
-	 * @param lstnr
-	 *            The lstnr (<code>SerialPortEventListener</code>)
-	 *            parameter.
-	 * @throws TooManyListenersException
-	 *             Too Many Listeners Exception.
+	 * @param lstnr The lstnr (<code>SerialPortEventListener</code>) parameter.
+	 * @throws TooManyListenersException Too Many Listeners Exception.
 	 * @see #removeEventListener()
 	 */
-	public synchronized void addEventListener(final SerialPortEventListener lstnr) {
+	public synchronized void addEventListener(final SerialPortEventListener lstnr) throws TooManyListenersException {
 		if (this.listener != null) {
-			try {
-				final Class tooManyClass = Class.forName("java.util.TooManyListenersException");
-				if (tooManyClass != null) {
-					Object exception = tooManyClass.newInstance();
-					if (exception instanceof RuntimeException) {
-						throw (RuntimeException) exception;
-					}
-				}
-			} catch (final InstantiationException exception1) {
-			} catch (final IllegalAccessException exception1) {
-			} catch (final ClassNotFoundException exception) {
-			}
-			throw new RuntimeException("java.util.TooManyListenersException");
+			throw new TooManyListenersException();
 		} else {
 			this.listener = lstnr;
 			// check all other related flags, all must be false
@@ -417,20 +389,15 @@ class NSSerialPort extends SerialPort {
 	}
 
 	/**
-	 * Close device nc with the specified fd and sem id parameters and return
-	 * the int result.
-	 * 
-	 * @param fd
-	 *            The fd (<code>int</code>) parameter.
-	 * @param semID
-	 *            The sem id (<code>int</code>) parameter.
+	 * Close device nc with the specified fd and sem id parameters and return the int result.
+	 * @param fd The fd (<code>int</code>) parameter.
+	 * @param semID The sem id (<code>int</code>) parameter.
 	 * @return Results of the close device nc (<code>int</code>) value.
 	 */
 	private native int closeDeviceNC(final int fd, final int semID);
 
 	/**
 	 * Disable receive framing.
-	 * 
 	 * @see #enableReceiveFraming(int)
 	 */
 	public void disableReceiveFraming() {
@@ -439,7 +406,6 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Disable receive threshold.
-	 * 
 	 * @see #enableReceiveThreshold(int)
 	 * @see #getReceiveThreshold()
 	 */
@@ -449,7 +415,6 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Disable receive timeout.
-	 * 
 	 * @see #enableReceiveTimeout(int)
 	 * @see #getReceiveTimeout()
 	 */
@@ -459,25 +424,19 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Enable receive framing with the specified rcv framing byte parameter.
-	 * 
-	 * @param rcvFramingByte
-	 *            The rcv framing byte (<code>int</code>) parameter.
-	 * @throws UnsupportedCommOperationException
-	 *             Unsupported Comm Operation Exception.
+	 * @param rcvFramingByte The rcv framing byte (<code>int</code>) parameter.
+	 * @throws UnsupportedCommOperationException Unsupported Comm Operation Exception.
 	 * @see #disableReceiveFraming()
 	 */
 	public void enableReceiveFraming(final int rcvFramingByte) throws UnsupportedCommOperationException {
-		/** ******* Disable receive framing for now ******** */
+		/********* Disable receive framing for now *********/
 		throw new UnsupportedCommOperationException();
 	}
 
 	/**
 	 * Enable receive threshold with the specified thresh parameter.
-	 * 
-	 * @param thresh
-	 *            The thresh (<code>int</code>) parameter.
-	 * @throws UnsupportedCommOperationException
-	 *             Unsupported Comm Operation Exception.
+	 * @param thresh The thresh (<code>int</code>) parameter.
+	 * @throws UnsupportedCommOperationException Unsupported Comm Operation Exception.
 	 * @see #disableReceiveThreshold()
 	 * @see #getReceiveThreshold()
 	 */
@@ -489,11 +448,8 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Enable receive timeout with the specified rt parameter.
-	 * 
-	 * @param rt
-	 *            The rt (<code>int</code>) parameter.
-	 * @throws UnsupportedCommOperationException
-	 *             Unsupported Comm Operation Exception.
+	 * @param rt The rt (<code>int</code>) parameter.
+	 * @throws UnsupportedCommOperationException Unsupported Comm Operation Exception.
 	 * @see #disableReceiveTimeout()
 	 * @see #getReceiveTimeout()
 	 */
@@ -507,9 +463,7 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Finalize.
-	 * 
-	 * @throws IOException
-	 *             IOException.
+	 * @throws IOException IOException.
 	 */
 	protected void finalize() throws IOException {
 		close();
@@ -517,7 +471,6 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Gets the baud rate (int) value.
-	 * 
 	 * @return The baud rate (<code>int</code>) value.
 	 */
 	public int getBaudRate() {
@@ -535,18 +488,14 @@ class NSSerialPort extends SerialPort {
 	}
 
 	/**
-	 * Get baud rate nc with the specified fd parameter and return the int
-	 * result.
-	 * 
-	 * @param fd
-	 *            The fd (<code>int</code>) parameter.
+	 * Get baud rate nc with the specified fd parameter and return the int result.
+	 * @param fd The fd (<code>int</code>) parameter.
 	 * @return Results of the get baud rate nc (<code>int</code>) value.
 	 */
 	private native int getBaudRateNC(final int fd);
 
 	/**
 	 * Gets the baudrate (int) value.
-	 * 
 	 * @return The baudrate (<code>int</code>) value.
 	 */
 	public int getBaudrate() {
@@ -555,7 +504,6 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Gets the data bits (int) value.
-	 * 
 	 * @return The data bits (<code>int</code>) value.
 	 */
 	public int getDataBits() {
@@ -583,23 +531,21 @@ class NSSerialPort extends SerialPort {
 	}
 
 	/**
-	 * Get data bits nc with the specified fd parameter and return the int
-	 * result.
-	 * 
-	 * @param fd
-	 *            The fd (<code>int</code>) parameter.
+	 * Get data bits nc with the specified fd parameter and return the int result.
+	 * @param fd The fd (<code>int</code>) parameter.
 	 * @return Results of the get data bits nc (<code>int</code>) value.
 	 */
 	private native int getDataBitsNC(final int fd);
 
 	/**
-	 * Gets the currently configured flow control mode. Returns: an integer
-	 * bitmask of the modes FLOWCONTROL_NONE, FLOWCONTROL_RTSCTS_IN,
-	 * FLOWCONTROL_RTSCTS_OUT, FLOWCONTROL_XONXOFF_IN, and
+	 * Gets the currently configured flow control mode.
+	 * Returns:
+	 * an integer bitmask of the modes FLOWCONTROL_NONE,
+	 * FLOWCONTROL_RTSCTS_IN,
+	 * FLOWCONTROL_RTSCTS_OUT,
+	 * FLOWCONTROL_XONXOFF_IN, and
 	 * FLOWCONTROL_XONXOFF_OUT.
-	 * 
-	 * @return Results of the get flow control mode (<code>int</code>)
-	 *         value.
+	 * @return Results of the get flow control mode (<code>int</code>) value.
 	 * @see #setFlowControlMode(int)
 	 */
 	public int getFlowControlMode() {
@@ -634,19 +580,14 @@ class NSSerialPort extends SerialPort {
 	}
 
 	/**
-	 * Get flow control mode nc with the specified fd parameter and return the
-	 * int result.
-	 * 
-	 * @param fd
-	 *            The fd (<code>int</code>) parameter.
-	 * @return Results of the get flow control mode nc (<code>int</code>)
-	 *         value.
+	 * Get flow control mode nc with the specified fd parameter and return the int result.
+	 * @param fd The fd (<code>int</code>) parameter.
+	 * @return Results of the get flow control mode nc (<code>int</code>) value.
 	 */
 	private native int getFlowControlModeNC(final int fd);
 
 	/**
 	 * Gets the input buffer size (int) value.
-	 * 
 	 * @return The input buffer size (<code>int</code>) value.
 	 * @see #setInputBufferSize(int)
 	 */
@@ -656,10 +597,8 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Gets the input stream value.
-	 * 
 	 * @return The input stream (<code>InputStream</code>) value.
-	 * @throws IOException
-	 *             IOException.
+	 * @throws IOException IOException.
 	 */
 	public InputStream getInputStream() throws IOException {
 		if (this.ins != null) {
@@ -677,7 +616,6 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Gets the output buffer size (int) value.
-	 * 
 	 * @return The output buffer size (<code>int</code>) value.
 	 * @see #setOutputBufferSize(int)
 	 */
@@ -687,10 +625,8 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Gets the output stream value.
-	 * 
 	 * @return The output stream (<code>OutputStream</code>) value.
-	 * @throws IOException
-	 *             IOException.
+	 * @throws IOException IOException.
 	 */
 	public OutputStream getOutputStream() throws IOException {
 		if (this.outs != null) {
@@ -709,7 +645,6 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Gets the parity (int) value.
-	 * 
 	 * @return The parity (<code>int</code>) value.
 	 */
 	public int getParity() {
@@ -741,16 +676,13 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Get parity nc with the specified fd parameter and return the int result.
-	 * 
-	 * @param fd
-	 *            The fd (<code>int</code>) parameter.
+	 * @param fd The fd (<code>int</code>) parameter.
 	 * @return Results of the get parity nc (<code>int</code>) value.
 	 */
 	private native int getParityNC(final int fd);
 
 	/**
 	 * Gets the receive framing byte (int) value.
-	 * 
 	 * @return The receive framing byte (<code>int</code>) value.
 	 */
 	public int getReceiveFramingByte() {
@@ -759,7 +691,6 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Gets the receive threshold (int) value.
-	 * 
 	 * @return The receive threshold (<code>int</code>) value.
 	 * @see #disableReceiveThreshold()
 	 * @see #enableReceiveThreshold(int)
@@ -770,7 +701,6 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Gets the receive timeout (int) value.
-	 * 
 	 * @return The receive timeout (<code>int</code>) value.
 	 * @see #disableReceiveTimeout()
 	 * @see #enableReceiveTimeout(int)
@@ -781,7 +711,6 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Gets the stop bits (int) value.
-	 * 
 	 * @return The stop bits (<code>int</code>) value.
 	 */
 	public int getStopBits() {
@@ -806,18 +735,14 @@ class NSSerialPort extends SerialPort {
 	}
 
 	/**
-	 * Get stop bits nc with the specified fd parameter and return the int
-	 * result.
-	 * 
-	 * @param fd
-	 *            The fd (<code>int</code>) parameter.
+	 * Get stop bits nc with the specified fd parameter and return the int result.
+	 * @param fd The fd (<code>int</code>) parameter.
 	 * @return Results of the get stop bits nc (<code>int</code>) value.
 	 */
 	private native int getStopBitsNC(final int fd);
 
 	/**
 	 * Gets the cd (boolean) value.
-	 * 
 	 * @return The cd (<code>boolean</code>) value.
 	 */
 	public boolean isCD() {
@@ -826,14 +751,12 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Gets the cdnc (boolean) value.
-	 * 
 	 * @return The cdnc (<code>boolean</code>) value.
 	 */
 	private native boolean isCDNC();
 
 	/**
 	 * Gets the cts (boolean) value.
-	 * 
 	 * @return The cts (<code>boolean</code>) value.
 	 * @see #notifyOnCTS(boolean)
 	 */
@@ -843,14 +766,12 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Gets the ctsnc (boolean) value.
-	 * 
 	 * @return The ctsnc (<code>boolean</code>) value.
 	 */
 	private native boolean isCTSNC();
 
 	/**
 	 * Gets the dsr (boolean) value.
-	 * 
 	 * @return The dsr (<code>boolean</code>) value.
 	 * @see #notifyOnDSR(boolean)
 	 */
@@ -860,14 +781,12 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Gets the dsrnc (boolean) value.
-	 * 
 	 * @return The dsrnc (<code>boolean</code>) value.
 	 */
 	private native boolean isDSRNC();
 
 	/**
 	 * Gets the dtr (boolean) value.
-	 * 
 	 * @return The dtr (<code>boolean</code>) value.
 	 * @see #setDTR(boolean)
 	 */
@@ -877,14 +796,12 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Gets the dtrnc (boolean) value.
-	 * 
 	 * @return The dtrnc (<code>boolean</code>) value.
 	 */
 	private native boolean isDTRNC();
 
 	/**
 	 * Gets the dtr (boolean) value.
-	 * 
 	 * @return The dtr (<code>boolean</code>) value.
 	 */
 	public boolean isDtr() {
@@ -893,7 +810,6 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Gets the ri (boolean) value.
-	 * 
 	 * @return The ri (<code>boolean</code>) value.
 	 */
 	public boolean isRI() {
@@ -902,14 +818,12 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Gets the rinc (boolean) value.
-	 * 
 	 * @return The rinc (<code>boolean</code>) value.
 	 */
 	private native boolean isRINC();
 
 	/**
 	 * Gets the rts (boolean) value.
-	 * 
 	 * @return The rts (<code>boolean</code>) value.
 	 * @see #setRTS(boolean)
 	 */
@@ -919,14 +833,12 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Gets the rtsnc (boolean) value.
-	 * 
 	 * @return The rtsnc (<code>boolean</code>) value.
 	 */
 	private native boolean isRTSNC();
 
 	/**
 	 * Gets the receive framing enabled (boolean) value.
-	 * 
 	 * @return The receive framing enabled (<code>boolean</code>) value.
 	 */
 	public boolean isReceiveFramingEnabled() {
@@ -935,7 +847,6 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Gets the receive threshold enabled (boolean) value.
-	 * 
 	 * @return The receive threshold enabled (<code>boolean</code>) value.
 	 */
 	public boolean isReceiveThresholdEnabled() {
@@ -948,7 +859,6 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Gets the receive timeout enabled (boolean) value.
-	 * 
 	 * @return The receive timeout enabled (<code>boolean</code>) value.
 	 */
 	public boolean isReceiveTimeoutEnabled() {
@@ -961,7 +871,6 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Gets the rts (boolean) value.
-	 * 
 	 * @return The rts (<code>boolean</code>) value.
 	 */
 	public boolean isRts() {
@@ -970,9 +879,7 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Notify on break interrupt with the specified notify parameter.
-	 * 
-	 * @param notify
-	 *            The notify (<code>boolean</code>) parameter.
+	 * @param notify The notify (<code>boolean</code>) parameter.
 	 */
 	public synchronized void notifyOnBreakInterrupt(final boolean notify) {
 		if (notify && this.notifyOnBIFlag) {
@@ -1000,9 +907,7 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Notify on cts with the specified notify parameter.
-	 * 
-	 * @param notify
-	 *            The notify (<code>boolean</code>) parameter.
+	 * @param notify The notify (<code>boolean</code>) parameter.
 	 */
 	public synchronized void notifyOnCTS(final boolean notify) {
 		if (notify && this.notifyOnCTSFlag) {
@@ -1029,9 +934,7 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Notify on carrier detect with the specified notify parameter.
-	 * 
-	 * @param notify
-	 *            The notify (<code>boolean</code>) parameter.
+	 * @param notify The notify (<code>boolean</code>) parameter.
 	 */
 	public synchronized void notifyOnCarrierDetect(final boolean notify) {
 		if (notify && this.notifyOnCDFlag) {
@@ -1059,9 +962,7 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Notify on dsr with the specified notify parameter.
-	 * 
-	 * @param notify
-	 *            The notify (<code>boolean</code>) parameter.
+	 * @param notify The notify (<code>boolean</code>) parameter.
 	 */
 	public synchronized void notifyOnDSR(final boolean notify) {
 		if (notify && this.notifyOnDSRFlag) {
@@ -1087,9 +988,7 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Notify on data available with the specified notify parameter.
-	 * 
-	 * @param notify
-	 *            The notify (<code>boolean</code>) parameter.
+	 * @param notify The notify (<code>boolean</code>) parameter.
 	 */
 	public synchronized void notifyOnDataAvailable(final boolean notify) {
 		if (notify) {
@@ -1116,9 +1015,7 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Notify on framing error with the specified notify parameter.
-	 * 
-	 * @param notify
-	 *            The notify (<code>boolean</code>) parameter.
+	 * @param notify The notify (<code>boolean</code>) parameter.
 	 */
 	public synchronized void notifyOnFramingError(final boolean notify) {
 		if (notify && this.notifyOnFEFlag) {
@@ -1145,9 +1042,7 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Notify on output empty with the specified notify parameter.
-	 * 
-	 * @param notify
-	 *            The notify (<code>boolean</code>) parameter.
+	 * @param notify The notify (<code>boolean</code>) parameter.
 	 */
 	public synchronized void notifyOnOutputEmpty(final boolean notify) {
 		this.notifyOnBufferFlag = notify;
@@ -1155,9 +1050,7 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Notify on overrun error with the specified notify parameter.
-	 * 
-	 * @param notify
-	 *            The notify (<code>boolean</code>) parameter.
+	 * @param notify The notify (<code>boolean</code>) parameter.
 	 */
 	public synchronized void notifyOnOverrunError(final boolean notify) {
 		if (notify && this.notifyOnORFlag) {
@@ -1185,9 +1078,7 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Notify on parity error with the specified notify parameter.
-	 * 
-	 * @param notify
-	 *            The notify (<code>boolean</code>) parameter.
+	 * @param notify The notify (<code>boolean</code>) parameter.
 	 */
 	public synchronized void notifyOnParityError(final boolean notify) {
 		if (notify && this.notifyOnPEFlag) {
@@ -1215,9 +1106,7 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Notify on ring indicator with the specified notify parameter.
-	 * 
-	 * @param notify
-	 *            The notify (<code>boolean</code>) parameter.
+	 * @param notify The notify (<code>boolean</code>) parameter.
 	 */
 	public synchronized void notifyOnRingIndicator(final boolean notify) {
 		if (notify && this.notifyOnRIFlag) {
@@ -1243,20 +1132,15 @@ class NSSerialPort extends SerialPort {
 	}
 
 	/**
-	 * Open device nc with the specified device name and sem id parameters and
-	 * return the int result.
-	 * 
-	 * @param deviceName
-	 *            The device name (<code>String</code>) parameter.
-	 * @param semID
-	 *            The sem id (<code>int</code>) parameter.
+	 * Open device nc with the specified device name and sem id parameters and return the int result.
+	 * @param deviceName The device name (<code>String</code>) parameter.
+	 * @param semID The sem id (<code>int</code>) parameter.
 	 * @return Results of the open device nc (<code>int</code>) value.
 	 */
 	private native int openDeviceNC(final String deviceName, final int semID);
 
 	/**
 	 * Remove event listener.
-	 * 
 	 * @see #addEventListener(SerialPortEventListener)
 	 */
 	public synchronized void removeEventListener() {
@@ -1274,15 +1158,10 @@ class NSSerialPort extends SerialPort {
 	}
 
 	/**
-	 * Report serial event with the specified event type, oldvalue and newvalue
-	 * parameters.
-	 * 
-	 * @param eventType
-	 *            The event type (<code>int</code>) parameter.
-	 * @param oldvalue
-	 *            The oldvalue (<code>boolean</code>) parameter.
-	 * @param newvalue
-	 *            The newvalue (<code>boolean</code>) parameter.
+	 * Report serial event with the specified event type, oldvalue and newvalue parameters.
+	 * @param eventType The event type (<code>int</code>) parameter.
+	 * @param oldvalue The oldvalue (<code>boolean</code>) parameter.
+	 * @param newvalue The newvalue (<code>boolean</code>) parameter.
 	 */
 	synchronized void reportSerialEvent(final int eventType, final boolean oldvalue, final boolean newvalue) {
 		if (this.listener != null) {
@@ -1295,9 +1174,7 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Send break with the specified millis parameter.
-	 * 
-	 * @param millis
-	 *            The millis (<code>int</code>) parameter.
+	 * @param millis The millis (<code>int</code>) parameter.
 	 */
 	public void sendBreak(final int millis) {
 		if (this.fd != -1) {
@@ -1306,22 +1183,16 @@ class NSSerialPort extends SerialPort {
 	}
 
 	/**
-	 * Send break nc with the specified fd and millis parameters and return the
-	 * int result.
-	 * 
-	 * @param fd
-	 *            The fd (<code>int</code>) parameter.
-	 * @param millis
-	 *            The millis (<code>int</code>) parameter.
+	 * Send break nc with the specified fd and millis parameters and return the int result.
+	 * @param fd The fd (<code>int</code>) parameter.
+	 * @param millis The millis (<code>int</code>) parameter.
 	 * @return Results of the send break nc (<code>int</code>) value.
 	 */
 	private native int sendBreakNC(final int fd, final int millis);
 
 	/**
 	 * Sets the dtr value.
-	 * 
-	 * @param dtr
-	 *            The dtr (<code>boolean</code>) parameter.
+	 * @param dtr The dtr (<code>boolean</code>) parameter.
 	 * @see #isDTR()
 	 */
 	public void setDTR(final boolean dtr) {
@@ -1330,43 +1201,41 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Sets the dtrnc value.
-	 * 
-	 * @param dtr
-	 *            The dtr (<code>boolean</code>) parameter.
+	 * @param dtr The dtr (<code>boolean</code>) parameter.
 	 */
 	private native void setDTRNC(final boolean dtr);
 
 	/**
-	 * Sets the flow control mode. Parameters: flow - control Can be a bitmask
-	 * combination of FLOWCONTROL_NONE: no flow control FLOWCONTROL_RTSCTS_IN:
-	 * RTS/CTS (hardware) flow control for input FLOWCONTROL_RTSCTS_OUT: RTS/CTS
-	 * (hardware) flow control for output FLOWCONTROL_XONXOFF_IN: XON/XOFF
-	 * (software) flow control for input FLOWCONTROL_XONXOFF_OUT: XON/XOFF
-	 * (software) flow control for output Throws:
-	 * UnsupportedCommOperationException if any of the flow control mode was not
-	 * supported by the underline OS, or if input and output flow control are
-	 * set to different values, i.e. one hardware and one software. The flow
-	 * control mode will revert to the value before the call was made.
-	 * 
-	 * @param flowctrl
-	 *            The flowctrl (<code>int</code>) parameter.
-	 * @throws UnsupportedCommOperationException
-	 *             Unsupported Comm Operation Exception.
+	 * Sets the flow control mode.
+	 * Parameters:
+	 * flow - control Can be a bitmask combination of
+	 * FLOWCONTROL_NONE: no flow control
+	 * FLOWCONTROL_RTSCTS_IN: RTS/CTS (hardware) flow control for input
+	 * FLOWCONTROL_RTSCTS_OUT: RTS/CTS (hardware) flow control for output
+	 * FLOWCONTROL_XONXOFF_IN: XON/XOFF (software) flow control for input
+	 * FLOWCONTROL_XONXOFF_OUT: XON/XOFF (software) flow control for output
+	 * Throws: UnsupportedCommOperationException
+	 * if any of the flow control mode was not supported by the underline OS,
+	 * or
+	 * if input and output flow control are set to different values, i.e. one
+	 * hardware and one software. The flow control mode will revert to the
+	 * value before the call was made.
+	 * @param flowctrl The flowctrl (<code>int</code>) parameter.
+	 * @throws UnsupportedCommOperationException Unsupported Comm Operation Exception.
 	 * @see #getFlowControlMode()
 	 */
 	public void setFlowControlMode(final int flowctrl) throws UnsupportedCommOperationException {
 		/* Check for invalid combinations. */
 		if ((this.fd == -1) ||
-		/*
-		 * Now FLOWCONTROL_NONE is 0 instead of 1, and hence no need for this
-		 * check below!!!
-		 */
-		/***********************************************************************
-		 * (((flowctrl & FLOWCONTROL_NONE) != 0) && (((flowctrl &
-		 * FLOWCONTROL_RTSCTS_IN) != 0) || ((flowctrl & FLOWCONTROL_RTSCTS_OUT) !=
-		 * 0) || ((flowctrl & FLOWCONTROL_XONXOFF_IN) != 0) || ((flowctrl &
-		 * FLOWCONTROL_XONXOFF_OUT) != 0))) ||
-		 **********************************************************************/
+		/* Now FLOWCONTROL_NONE is 0 instead of 1, and hence no need for this
+		   check below!!! */
+		/**************************
+		   (((flowctrl & FLOWCONTROL_NONE) != 0) &&
+		(((flowctrl & FLOWCONTROL_RTSCTS_IN) != 0) ||
+		 ((flowctrl & FLOWCONTROL_RTSCTS_OUT) != 0) ||
+		 ((flowctrl & FLOWCONTROL_XONXOFF_IN) != 0) ||
+		 ((flowctrl & FLOWCONTROL_XONXOFF_OUT) != 0))) ||
+		 **************************/
 		(((flowctrl & FLOWCONTROL_RTSCTS_IN) != 0) && ((flowctrl & FLOWCONTROL_XONXOFF_OUT) != 0)) || (((flowctrl & FLOWCONTROL_XONXOFF_IN) != 0) && ((flowctrl & FLOWCONTROL_RTSCTS_OUT) != 0))
 				|| (((flowctrl & FLOWCONTROL_RTSCTS_IN) != 0) && ((flowctrl & FLOWCONTROL_XONXOFF_IN) != 0)) || (((flowctrl & FLOWCONTROL_RTSCTS_OUT) != 0) && ((flowctrl & FLOWCONTROL_XONXOFF_OUT) != 0))) {
 			throw new UnsupportedCommOperationException();
@@ -1381,34 +1250,25 @@ class NSSerialPort extends SerialPort {
 	}
 
 	/**
-	 * Set flow control mode nc with the specified fd and flowctrl parameters
-	 * and return the int result.
-	 * 
-	 * @param fd
-	 *            The fd (<code>int</code>) parameter.
-	 * @param flowctrl
-	 *            The flowctrl (<code>int</code>) parameter.
-	 * @return Results of the set flow control mode nc (<code>int</code>)
-	 *         value.
+	 * Set flow control mode nc with the specified fd and flowctrl parameters and return the int result.
+	 * @param fd The fd (<code>int</code>) parameter.
+	 * @param flowctrl The flowctrl (<code>int</code>) parameter.
+	 * @return Results of the set flow control mode nc (<code>int</code>) value.
 	 */
 	private native int setFlowControlModeNC(final int fd, final int flowctrl);
 
 	/**
 	 * Sets the input buffer size value.
-	 * 
-	 * @param size
-	 *            The size (<code>int</code>) parameter.
+	 * @param size The size (<code>int</code>) parameter.
 	 * @see #getInputBufferSize()
 	 */
 	public void setInputBufferSize(final int size) {
-		/** ******* Disable read buffering for now ******** */
+		/********* Disable read buffering for now *********/
 	}
 
 	/**
 	 * Sets the output buffer size value.
-	 * 
-	 * @param size
-	 *            The size (<code>int</code>) parameter.
+	 * @param size The size (<code>int</code>) parameter.
 	 * @see #getOutputBufferSize()
 	 */
 	public void setOutputBufferSize(final int size) {
@@ -1419,9 +1279,7 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Sets the rts value.
-	 * 
-	 * @param rts
-	 *            The rts (<code>boolean</code>) parameter.
+	 * @param rts The rts (<code>boolean</code>) parameter.
 	 * @see #isRTS()
 	 */
 	public void setRTS(final boolean rts) {
@@ -1430,34 +1288,24 @@ class NSSerialPort extends SerialPort {
 
 	/**
 	 * Sets the rtsnc value.
-	 * 
-	 * @param rts
-	 *            The rts (<code>boolean</code>) parameter.
+	 * @param rts The rts (<code>boolean</code>) parameter.
 	 */
 	private native void setRTSNC(final boolean rts);
 
 	/**
 	 * Sets the rcv fifo trigger value.
-	 * 
-	 * @param trigger
-	 *            The trigger (<code>int</code>) parameter.
+	 * @param trigger The trigger (<code>int</code>) parameter.
 	 */
 	public void setRcvFifoTrigger(final int trigger) {
 	}
 
 	/**
 	 * Set serial port params with the specified bd, db, sb and par parameters.
-	 * 
-	 * @param bd
-	 *            The bd (<code>int</code>) parameter.
-	 * @param db
-	 *            The db (<code>int</code>) parameter.
-	 * @param sb
-	 *            The sb (<code>int</code>) parameter.
-	 * @param par
-	 *            The par (<code>int</code>) parameter.
-	 * @throws UnsupportedCommOperationException
-	 *             Unsupported Comm Operation Exception.
+	 * @param bd The bd (<code>int</code>) parameter.
+	 * @param db The db (<code>int</code>) parameter.
+	 * @param sb The sb (<code>int</code>) parameter.
+	 * @param par The par (<code>int</code>) parameter.
+	 * @throws UnsupportedCommOperationException Unsupported Comm Operation Exception.
 	 */
 	public void setSerialPortParams(final int bd, final int db, final int sb, final int par) throws UnsupportedCommOperationException {
 		/* Validate the values. */
@@ -1467,9 +1315,7 @@ class NSSerialPort extends SerialPort {
 		if ((db != DATABITS_5) && (db != DATABITS_6) && (db != DATABITS_7) && (db != DATABITS_8)) {
 			throw new UnsupportedCommOperationException();
 		}
-		if ((sb != STOPBITS_1) && (sb != STOPBITS_2) && (sb != STOPBITS_1_5)) { // 1.5
-																				// not
-																				// supported
+		if ((sb != STOPBITS_1) && (sb != STOPBITS_2) && (sb != STOPBITS_1_5)) { // 1.5 not supported
 			throw new UnsupportedCommOperationException();
 		}
 		if ((par != PARITY_NONE) && (par != PARITY_ODD) && (par != PARITY_EVEN) && (par != PARITY_MARK) && (par != PARITY_SPACE)) {
@@ -1482,21 +1328,13 @@ class NSSerialPort extends SerialPort {
 	}
 
 	/**
-	 * Set serial port params nc with the specified fd, bd, db, sb and par
-	 * parameters and return the int result.
-	 * 
-	 * @param fd
-	 *            The fd (<code>int</code>) parameter.
-	 * @param bd
-	 *            The bd (<code>int</code>) parameter.
-	 * @param db
-	 *            The db (<code>int</code>) parameter.
-	 * @param sb
-	 *            The sb (<code>int</code>) parameter.
-	 * @param par
-	 *            The par (<code>int</code>) parameter.
-	 * @return Results of the set serial port params nc (<code>int</code>)
-	 *         value.
+	 * Set serial port params nc with the specified fd, bd, db, sb and par parameters and return the int result.
+	 * @param fd The fd (<code>int</code>) parameter.
+	 * @param bd The bd (<code>int</code>) parameter.
+	 * @param db The db (<code>int</code>) parameter.
+	 * @param sb The sb (<code>int</code>) parameter.
+	 * @param par The par (<code>int</code>) parameter.
+	 * @return Results of the set serial port params nc (<code>int</code>) value.
 	 */
 	private native int setSerialPortParamsNC(final int fd, final int bd, final int db, final int sb, final int par);
 }
