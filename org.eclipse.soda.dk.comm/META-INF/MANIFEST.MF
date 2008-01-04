@@ -4,6 +4,7 @@ Bundle-Copyright: %bundle.copyright
 Bundle-Description: %bundle.description
 Bundle-Localization: OSGI-INF/l10n/bundle
 Bundle-Name: %bundle.name
+Bundle-RequiredExecutionEnvironment: CDC-1.1/Foundation-1.1
 Bundle-SymbolicName: org.eclipse.soda.dk.comm
 Bundle-Vendor: %bundle.vendor
 Bundle-Version: 1.1.0.qualifier
