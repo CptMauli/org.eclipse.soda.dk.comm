@@ -7,7 +7,6 @@ Bundle-Name: %bundle.name
 Bundle-SymbolicName: org.eclipse.soda.dk.comm
 Bundle-Vendor: %bundle.vendor
 Bundle-Version: 1.1.0.qualifier
-Created-By: 2.1 (IBM Corporation)
 Export-Package: javax.comm;version="1.1.0",
  org.eclipse.soda.dk.comm;version="1.1.0",
  org.eclipse.soda.dk.comm.bundle;version="1.1.0",
