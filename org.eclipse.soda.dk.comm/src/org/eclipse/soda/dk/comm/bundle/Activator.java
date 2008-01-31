@@ -29,8 +29,8 @@ public class Activator implements BundleActivator {
 		String result = null;
 		int i = rawList.indexOf(bundleFile);
 		if (i != -1) {
-			int j = rawList.lastIndexOf(",", i);
-			int k = rawList.lastIndexOf("file:", i);
+			int j = rawList.lastIndexOf(',', i);
+			int k = rawList.lastIndexOf("file:", i); //$NON-NLS-1$
 			if (k != -1) {
 				result = rawList.substring(k + 5, i + bundleFile.length());
 			} else {
@@ -47,9 +47,9 @@ public class Activator implements BundleActivator {
 	 */
 	private String parseInstall(final String rawInstall) {
 		String result;
-		int i = rawInstall.indexOf("file:");
+		int i = rawInstall.indexOf("file:"); //$NON-NLS-1$
 		result = rawInstall.substring(i + 5);
-		if (result.startsWith("/")) {
+		if (result.startsWith("/")) { //$NON-NLS-1$
 			result = result.substring(1);
 		}
 		return result;
@@ -62,9 +62,9 @@ public class Activator implements BundleActivator {
 	 */
 	private String parseLoc(final String rawLoc) {
 		String result;
-		int i = rawLoc.indexOf("file:");
+		int i = rawLoc.indexOf("file:"); //$NON-NLS-1$
 		result = rawLoc.substring(i + 5);
-		if (rawLoc.endsWith("/")) {
+		if (rawLoc.endsWith("/")) { //$NON-NLS-1$
 			result = result.substring(0, result.length() - 1);
 		}
 		return result;
@@ -81,8 +81,8 @@ public class Activator implements BundleActivator {
 			Library.setBundlepath(Library.HTTP, bundle_loc);
 		} else {
 			String bundle_file_name = parseLoc(bundle_loc);
-			String bundle_install = parseInstall(System.getProperty("osgi.install.area"));
-			String bundle_path = parseBundleList(System.getProperty("osgi.bundles"), bundle_file_name);
+			String bundle_install = parseInstall(System.getProperty("osgi.install.area")); //$NON-NLS-1$
+			String bundle_path = parseBundleList(System.getProperty("osgi.bundles"), bundle_file_name); //$NON-NLS-1$
 			if (bundle_path == null || bundle_path.length() == bundle_file_name.length()) {
 				bundle_path = bundle_install + bundle_file_name;
 			}
@@ -101,5 +101,6 @@ public class Activator implements BundleActivator {
 	 * @throws Exception Exception.
 	 */
 	public void stop(final BundleContext arg0) throws Exception {
+		/* do nothing */
 	}
 }

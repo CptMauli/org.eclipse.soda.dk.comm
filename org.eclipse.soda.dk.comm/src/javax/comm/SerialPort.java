@@ -287,6 +287,7 @@ public abstract class SerialPort extends CommPort {
 	 * @param trigger	The trigger (<code>int</code>) parameter.
 	 */
 	public void setRcvFifoTrigger(final int trigger) {
+		/* do nothing */
 	}
 
 	/**
