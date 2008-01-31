@@ -188,9 +188,9 @@ public abstract class CommPort extends Object {
 			cport = null;
 		}
 		if (cport != null) {
-			pt = cport.getPortType() == CommPortIdentifier.PORT_SERIAL ? "SERIAL" : "PARALLEL";
+			pt = cport.getPortType() == CommPortIdentifier.PORT_SERIAL ? "SERIAL" : "PARALLEL";  //$NON-NLS-1$//$NON-NLS-2$
 		} else {
-			pt = " ";
+			pt = " "; //$NON-NLS-1$
 		}
 		str = new String(this.name + ':' + pt);
 		return str;

@@ -14,11 +14,23 @@ import java.util.*;
 import java.io.FileDescriptor;
 import org.eclipse.soda.dk.comm.internal.Library;
 
+/**
+ * @author IBM
+ *
+ */
 public class CommPortIdentifier {
+	/**
+	 * Define polling time value.
+	 */
 	public static final int pollingTime = 1;
-
+	/**
+	 * Define port serial value.
+	 */
 	public static final int PORT_SERIAL = 1;
 
+	/**
+	 * Define port parallel value.
+	 */
 	public static final int PORT_PARALLEL = 2;
 
 	static CommDriver commDriver = null;
@@ -109,6 +121,12 @@ public class CommPortIdentifier {
 		return (CommPortIdentifier) comPortId;
 	}
 
+	/**
+	 * @param appName
+	 * @param timeout
+	 * @return comport
+	 * @throws PortInUseException
+	 */
 	public synchronized CommPort open(final String appName, final int timeout) throws PortInUseException {
 		if (isCurrentlyOwned()) {
 			final PortInUseException piux = new PortInUseException(appName);

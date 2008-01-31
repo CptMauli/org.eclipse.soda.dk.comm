@@ -26,22 +26,22 @@ public class Library {
 	/**
 	 * Define the http (String) constant.
 	 */
-	public static final String HTTP = "http";
+	public static final String HTTP = "http"; //$NON-NLS-1$
 
 	/**
 	 * Define the file (String) constant.
 	 */
-	public static final String FILE = "file";
+	public static final String FILE = "file"; //$NON-NLS-1$
 
 	/**
 	 * Define the pathtype (String) field.
 	 */
-	private static String pathtype = "";
+	private static String pathtype = ""; //$NON-NLS-1$
 
 	/**
 	 * Define the bundlepath (String) field.
 	 */
-	private static String bundlepath = "";
+	private static String bundlepath = ""; //$NON-NLS-1$
 
 	/**
 	 * Load_dkcomm.
@@ -69,7 +69,7 @@ public class Library {
 		} else if (os.equalsIgnoreCase("linux")) { //$NON-NLS-1$
 			libname = "dkcomm.so"; //$NON-NLS-1$
 		}
-		String libpath = "lib/"+ os + '/' + processor + '/';
+		String libpath = "lib/"+ os + '/' + processor + '/'; //$NON-NLS-1$
 		try {
 			if (pathtype.equals(FILE)) {
 				unzipLib_local(javalibpath, libpath, libname, bundlepath);
@@ -93,7 +93,7 @@ public class Library {
 	 */
 	private static boolean load_from_java_lib_path() {
 		try {
-			System.loadLibrary("dkcomm");
+			System.loadLibrary("dkcomm"); //$NON-NLS-1$
 		} catch (final UnsatisfiedLinkError e) {
 			return false;
 		}

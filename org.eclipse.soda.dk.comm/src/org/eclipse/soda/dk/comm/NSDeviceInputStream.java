@@ -13,6 +13,10 @@ package org.eclipse.soda.dk.comm;
 import javax.comm.*;
 import java.io.*;
 
+/**
+ * @author IBM
+ *
+ */
 public class NSDeviceInputStream extends InputStream
 {
 //-----------------------------------------------------------------------------
