@@ -56,20 +56,20 @@ public class Library {
 	 * Load_from_bundle.
 	 */
 	private static void load_from_bundle() {
-		String file_separator = System.getProperty("file.separator");
-		String javalibpath = System.getProperty("java.library.path");
-		String path_seperator = System.getProperty("path.separator");
+		String file_separator = System.getProperty("file.separator"); //$NON-NLS-1$
+		String javalibpath = System.getProperty("java.library.path"); //$NON-NLS-1$
+		String path_seperator = System.getProperty("path.separator"); //$NON-NLS-1$
 		int i = javalibpath.indexOf(path_seperator);
 		javalibpath = javalibpath.substring(0, i) + file_separator;
-		String os = System.getProperty("osgi.ws");
-		String processor = System.getProperty("org.osgi.framework.processor");
-		String libname = "";
-		if (os.equalsIgnoreCase("win32")) {
-			libname = "dkcomm.dll";
-		} else if (os.equalsIgnoreCase("linux")) {
-			libname = "dkcomm.so";
+		String os = System.getProperty("osgi.ws"); //$NON-NLS-1$
+		String processor = System.getProperty("org.osgi.framework.processor"); //$NON-NLS-1$
+		String libname = ""; //$NON-NLS-1$
+		if (os.equalsIgnoreCase("win32")) { //$NON-NLS-1$
+			libname = "dkcomm.dll"; //$NON-NLS-1$
+		} else if (os.equalsIgnoreCase("linux")) { //$NON-NLS-1$
+			libname = "dkcomm.so"; //$NON-NLS-1$
 		}
-		String libpath = "lib" + "/" + os + "/" + processor + "/";
+		String libpath = "lib/"+ os + '/' + processor + '/';
 		try {
 			if (pathtype.equals(FILE)) {
 				unzipLib_local(javalibpath, libpath, libname, bundlepath);
