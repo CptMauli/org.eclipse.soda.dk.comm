@@ -303,14 +303,13 @@ class NSSerialPort extends SerialPort {
 					if ((this.fd = openDeviceNC(cur.physicalName, cur.semID)) == -1) {
 						// file descriptor is NOT valid, throw an Exception
 						throw new IOException();
-					} else {
-						/* Got a good file descriptor. */
-						/* keep a copy of the DeviceListEntry where you found the portName */
-						/* get a FileDescriptor object */
-						/* turn opened ON */
-						this.dle = cur;
-						this.dle.opened = true;
 					}
+					/* Got a good file descriptor. */
+					/* keep a copy of the DeviceListEntry where you found the portName */
+					/* get a FileDescriptor object */
+					/* turn opened ON */
+					this.dle = cur;
+					this.dle.opened = true;
 				} else {
 					throw new IOException();
 				}
@@ -328,19 +327,18 @@ class NSSerialPort extends SerialPort {
 	public synchronized void addEventListener(final SerialPortEventListener lstnr) throws TooManyListenersException {
 		if (this.listener != null) {
 			throw new TooManyListenersException();
-		} else {
-			this.listener = lstnr;
-			// check all other related flags, all must be false
-			if ((this.notifyOnDSRFlag || this.notifyOnRIFlag || this.notifyOnCDFlag || this.notifyOnORFlag || this.notifyOnPEFlag || this.notifyOnFEFlag || this.notifyOnCTSFlag || this.notifyOnBIFlag) && (this.statusThread == null)) {
-				this.statusThread = new SerialStatusEventThread(this.fd, this);
-				// statusThread.setDaemon( true ); // check it out ???
-				this.statusThread.start();
-			}
-			if (this.notifyOnDataFlag && (this.dataThread == null)) {
-				this.dataThread = new SerialDataEventThread(this.fd, this);
-				// dataThread.setDaemon( true ); // check it out ???
-				this.dataThread.start();
-			}
+		}
+		this.listener = lstnr;
+		// check all other related flags, all must be false
+		if ((this.notifyOnDSRFlag || this.notifyOnRIFlag || this.notifyOnCDFlag || this.notifyOnORFlag || this.notifyOnPEFlag || this.notifyOnFEFlag || this.notifyOnCTSFlag || this.notifyOnBIFlag) && (this.statusThread == null)) {
+			this.statusThread = new SerialStatusEventThread(this.fd, this);
+			// statusThread.setDaemon( true ); // check it out ???
+			this.statusThread.start();
+		}
+		if (this.notifyOnDataFlag && (this.dataThread == null)) {
+			this.dataThread = new SerialDataEventThread(this.fd, this);
+			// dataThread.setDaemon( true ); // check it out ???
+			this.dataThread.start();
 		}
 	}
 
@@ -553,25 +551,24 @@ class NSSerialPort extends SerialPort {
 			final int retCode = getFlowControlModeNC(this.fd);
 			if (retCode == -1) {
 				return this.flowcontrol;
+			}
+			if (retCode == 0) {
+				this.flowcontrol = FLOWCONTROL_NONE;
 			} else {
-				if (retCode == 0) {
-					this.flowcontrol = FLOWCONTROL_NONE;
-				} else {
-					int fl = 0;
-					if ((retCode & 1) != 0) {
-						fl |= FLOWCONTROL_RTSCTS_IN;
-					}
-					if ((retCode & 2) != 0) {
-						fl |= FLOWCONTROL_RTSCTS_OUT;
-					}
-					if ((retCode & 4) != 0) {
-						fl |= FLOWCONTROL_XONXOFF_IN;
-					}
-					if ((retCode & 8) != 0) {
-						fl |= FLOWCONTROL_XONXOFF_OUT;
-					}
-					this.flowcontrol = fl;
+				int fl = 0;
+				if ((retCode & 1) != 0) {
+					fl |= FLOWCONTROL_RTSCTS_IN;
 				}
+				if ((retCode & 2) != 0) {
+					fl |= FLOWCONTROL_RTSCTS_OUT;
+				}
+				if ((retCode & 4) != 0) {
+					fl |= FLOWCONTROL_XONXOFF_IN;
+				}
+				if ((retCode & 8) != 0) {
+					fl |= FLOWCONTROL_XONXOFF_OUT;
+				}
+				this.flowcontrol = fl;
 			}
 		} else {
 			return this.flowcontrol;
@@ -603,15 +600,13 @@ class NSSerialPort extends SerialPort {
 	public InputStream getInputStream() throws IOException {
 		if (this.ins != null) {
 			return this.ins;
-		} else {
-			/* Y: get a new deviceInputStream */
-			if ((this.ins = new NSDeviceInputStream(this, this.dle.portType)) == null) {
-				throw new IOException();
-			} else {
-				this.ins.fd = this.fd;
-				return this.ins;
-			}
 		}
+		/* Y: get a new deviceInputStream */
+		if ((this.ins = new NSDeviceInputStream(this, this.dle.portType)) == null) {
+			throw new IOException();
+		}
+		this.ins.fd = this.fd;
+		return this.ins;
 	}
 
 	/**
@@ -631,16 +626,14 @@ class NSSerialPort extends SerialPort {
 	public OutputStream getOutputStream() throws IOException {
 		if (this.outs != null) {
 			return this.outs;
-		} else {
-			/* Y: get a new DeviceOutputStream */
-			if ((this.outs = new NSDeviceOutputStream(this, this.dle.portType)) == null) {
-				throw new IOException();
-			} else {
-				// what do I do here
-				this.outs.fd = this.fd;
-				return this.outs;
-			}
 		}
+		/* Y: get a new DeviceOutputStream */
+		if ((this.outs = new NSDeviceOutputStream(this, this.dle.portType)) == null) {
+			throw new IOException();
+		}
+		// what do I do here
+		this.outs.fd = this.fd;
+		return this.outs;
 	}
 
 	/**
@@ -852,9 +845,8 @@ class NSSerialPort extends SerialPort {
 	public boolean isReceiveThresholdEnabled() {
 		if (this.rcvThreshold == -1) {
 			return false;
-		} else {
-			return true;
 		}
+		return true;
 	}
 
 	/**
@@ -864,9 +856,8 @@ class NSSerialPort extends SerialPort {
 	public boolean isReceiveTimeoutEnabled() {
 		if (this.rcvTimeout == -1) {
 			return false;
-		} else {
-			return true;
 		}
+		return true;
 	}
 
 	/**
@@ -1166,9 +1157,7 @@ class NSSerialPort extends SerialPort {
 	synchronized void reportSerialEvent(final int eventType, final boolean oldvalue, final boolean newvalue) {
 		if (this.listener != null) {
 			final SerialPortEvent se = new SerialPortEvent(this, eventType, oldvalue, newvalue);
-			if (se != null) {
-				this.listener.serialEvent(se);
-			}
+			this.listener.serialEvent(se);
 		}
 	}
 
@@ -1239,13 +1228,12 @@ class NSSerialPort extends SerialPort {
 		(((flowctrl & FLOWCONTROL_RTSCTS_IN) != 0) && ((flowctrl & FLOWCONTROL_XONXOFF_OUT) != 0)) || (((flowctrl & FLOWCONTROL_XONXOFF_IN) != 0) && ((flowctrl & FLOWCONTROL_RTSCTS_OUT) != 0))
 				|| (((flowctrl & FLOWCONTROL_RTSCTS_IN) != 0) && ((flowctrl & FLOWCONTROL_XONXOFF_IN) != 0)) || (((flowctrl & FLOWCONTROL_RTSCTS_OUT) != 0) && ((flowctrl & FLOWCONTROL_XONXOFF_OUT) != 0))) {
 			throw new UnsupportedCommOperationException();
+		}
+		// retcode of -1 is a problem
+		if (setFlowControlModeNC(this.fd, flowctrl) != -1) {
+			this.flowcontrol = flowctrl;
 		} else {
-			// retcode of -1 is a problem
-			if (setFlowControlModeNC(this.fd, flowctrl) != -1) {
-				this.flowcontrol = flowctrl;
-			} else {
-				throw new UnsupportedCommOperationException();
-			}
+			throw new UnsupportedCommOperationException();
 		}
 	}
 
@@ -1297,6 +1285,7 @@ class NSSerialPort extends SerialPort {
 	 * @param trigger The trigger (<code>int</code>) parameter.
 	 */
 	public void setRcvFifoTrigger(final int trigger) {
+		/* do nothing */
 	}
 
 	/**

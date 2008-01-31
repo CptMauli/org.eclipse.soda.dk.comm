@@ -114,9 +114,8 @@ public class NSCommDriver implements CommDriver {
 			if (cur == dle) {
 				ndle = cur.next;
 				break;
-			} else {
-				cur = cur.next;
 			}
+			cur = cur.next;
 		}
 		return ndle;
 	}

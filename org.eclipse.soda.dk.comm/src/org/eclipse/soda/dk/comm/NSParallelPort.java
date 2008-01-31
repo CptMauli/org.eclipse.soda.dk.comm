@@ -173,14 +173,13 @@ public class NSParallelPort extends ParallelPort {
 					if ((this.fd = openDeviceNC(cur.physicalName, cur.semID)) == -1) {
 						// file descriptor is NOT valid, throw an Exception
 						throw new IOException();
-					} else {
-						/* Got a good file descriptor. */
-						/* keep a copy of the DeviceListEntry where you found the portName */
-						/* get a FileDescriptor object */
-						/* turn opened ON */
-						this.dle = cur;
-						this.dle.opened = true;
 					}
+					/* Got a good file descriptor. */
+					/* keep a copy of the DeviceListEntry where you found the portName */
+					/* get a FileDescriptor object */
+					/* turn opened ON */
+					this.dle = cur;
+					this.dle.opened = true;
 				} else {
 					throw new IOException();
 				}
@@ -198,13 +197,12 @@ public class NSParallelPort extends ParallelPort {
 	public synchronized void addEventListener(final ParallelPortEventListener lst) throws TooManyListenersException {
 		if (this.listener != null) {
 			throw new TooManyListenersException();
-		} else {
-			this.listener = lst;
-			if (this.notifyOnErrorFlag && (this.errorThread == null)) {
-				this.errorThread = new ParallelErrorEventThread(this.fd, this);
-				// errorThread.setDaemon( true ); // check it out
-				this.errorThread.start();
-			}
+		}
+		this.listener = lst;
+		if (this.notifyOnErrorFlag && (this.errorThread == null)) {
+			this.errorThread = new ParallelErrorEventThread(this.fd, this);
+			// errorThread.setDaemon( true ); // check it out
+			this.errorThread.start();
 		}
 	}
 
@@ -581,9 +579,7 @@ public class NSParallelPort extends ParallelPort {
 	synchronized void reportParallelEvent(final int eventType, final boolean oldvalue, final boolean newvalue) {
 		if (this.listener != null) {
 			final ParallelPortEvent pe = new ParallelPortEvent(this, eventType, oldvalue, newvalue);
-			if (pe != null) {
-				this.listener.parallelEvent(pe);
-			}
+			this.listener.parallelEvent(pe);
 		}
 	}
 
@@ -600,6 +596,7 @@ public class NSParallelPort extends ParallelPort {
 	 * @see #getInputBufferSize()
 	 */
 	public void setInputBufferSize(final int size) {
+		/* do nothing */
 	}
 
 	/**
