@@ -13,6 +13,10 @@ package org.eclipse.soda.dk.comm;
 import javax.comm.*;
 import java.io.*;
 
+/**
+ * @author IBM
+ *
+ */
 public class NSDeviceOutputStream extends OutputStream
 {
 //-----------------------------------------------------------------------------
@@ -55,7 +59,10 @@ public class NSDeviceOutputStream extends OutputStream
 // Methods - public
 //-----------------------------------------------------------------------------
 
-  public int getPt() {
+  /**
+ * @return pt
+ */
+public int getPt() {
 		return this.pt;
 	}
 
