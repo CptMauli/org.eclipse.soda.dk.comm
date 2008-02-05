@@ -24,9 +24,9 @@ public class NSCommDriver implements CommDriver {
 	static {
 		try {
 			Library.load_dkcomm();
-		} catch (final UnsatisfiedLinkError e) {
+		} catch (final UnsatisfiedLinkError exception) {
 			System.out.println("2. unsatisfied link error.\n");
-			e.printStackTrace();
+			exception.printStackTrace();
 			System.exit(1);
 		}
 	}
@@ -85,11 +85,10 @@ public class NSCommDriver implements CommDriver {
 				port = new NSParallelPort(portName, this);
 				break;
 			}
-		} catch (final IOException ex) {
-			System.out.println("IOException occured! " + ex);
+		} catch (final IOException exception) {
+			exception.printStackTrace();
 			/* port is being used by another app? */
-			ex.printStackTrace();
-			port = null;
+//			port = null;
 		}
 		return port;
 	}
