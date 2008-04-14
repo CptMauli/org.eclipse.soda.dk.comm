@@ -1,19 +1,15 @@
 package org.eclipse.soda.dk.comm;
 
-/*************************************************************************
- * Copyright (c) 1999, 2008 IBM.                                         *
- * All rights reserved. This program and the accompanying materials      *
- * are made available under the terms of the Eclipse Public License v1.0 *
- * which accompanies this distribution, and is available at              *
- * http://www.eclipse.org/legal/epl-v10.html                             *
- *                                                                       *
- * Contributors:                                                         *
- *     IBM - initial API and implementation                              *
- ************************************************************************/
+/**************************************************************************************************************************************************************************************************************************************************************
+ * Copyright (c) 1999, 2008 IBM. * All rights reserved. This program and the accompanying materials * are made available under the terms of the Eclipse Public License v1.0 * which accompanies this distribution, and is available at *
+ * http://www.eclipse.org/legal/epl-v10.html * * Contributors: * IBM - initial API and implementation *
+ *************************************************************************************************************************************************************************************************************************************************************/
 import java.io.IOException;
+
 import javax.comm.CommDriver;
 import javax.comm.CommPort;
 import javax.comm.CommPortIdentifier;
+
 import org.eclipse.soda.dk.comm.internal.Library;
 
 /**
@@ -25,23 +21,26 @@ public class NSCommDriver implements CommDriver {
 		try {
 			Library.load_dkcomm();
 		} catch (final UnsatisfiedLinkError exception) {
-			System.out.println("2. unsatisfied link error.\n");
 			exception.printStackTrace();
-			System.exit(1);
 		}
 	}
 
 	/**
-	 * Define the devicelist (DeviceList) field.
+	 * Define the device list (DeviceList) field.
 	 */
 	DeviceList devicelist = new DeviceList();
 
 	/**
 	 * Add device to list with the specified port name, port type, device name and sem id parameters.
-	 * @param portName	The port name (<code>String</code>) parameter.
-	 * @param portType	The port type (<code>int</code>) parameter.
-	 * @param deviceName	The device name (<code>String</code>) parameter.
-	 * @param semID	The sem id (<code>int</code>) parameter.
+	 * 
+	 * @param portName
+	 *            The port name (<code>String</code>) parameter.
+	 * @param portType
+	 *            The port type (<code>int</code>) parameter.
+	 * @param deviceName
+	 *            The device name (<code>String</code>) parameter.
+	 * @param semID
+	 *            The sem id (<code>int</code>) parameter.
 	 */
 	protected void addDeviceToList(final String portName, final int portType, final String deviceName, final int semID) {
 		DeviceListEntry cur = this.devicelist.headEntry;
@@ -70,9 +69,12 @@ public class NSCommDriver implements CommDriver {
 
 	/**
 	 * Get comm port with the specified port name and port type parameters and return the CommPort result.
-	 * @param portName	The port name (<code>String</code>) parameter.
-	 * @param portType	The port type (<code>int</code>) parameter.
-	 * @return	Results of the get comm port (<code>CommPort</code>) value.
+	 * 
+	 * @param portName
+	 *            The port name (<code>String</code>) parameter.
+	 * @param portType
+	 *            The port type (<code>int</code>) parameter.
+	 * @return Results of the get comm port (<code>CommPort</code>) value.
 	 */
 	public CommPort getCommPort(final String portName, final int portType) {
 		CommPort port = null;
@@ -88,14 +90,15 @@ public class NSCommDriver implements CommDriver {
 		} catch (final IOException exception) {
 			exception.printStackTrace();
 			/* port is being used by another app? */
-//			port = null;
+// port = null;
 		}
 		return port;
 	}
 
 	/**
 	 * Gets the first dle (DeviceListEntry) value.
-	 * @return	The first dle (<code>DeviceListEntry</code>) value.
+	 * 
+	 * @return The first dle (<code>DeviceListEntry</code>) value.
 	 */
 	DeviceListEntry getFirstDLE() {
 		return this.devicelist.headEntry;
@@ -103,8 +106,10 @@ public class NSCommDriver implements CommDriver {
 
 	/**
 	 * Get next dle with the specified dle parameter and return the DeviceListEntry result.
-	 * @param dle	The dle (<code>DeviceListEntry</code>) parameter.
-	 * @return	Results of the get next dle (<code>DeviceListEntry</code>) value.
+	 * 
+	 * @param dle
+	 *            The dle (<code>DeviceListEntry</code>) parameter.
+	 * @return Results of the get next dle (<code>DeviceListEntry</code>) value.
 	 */
 	DeviceListEntry getNextDLE(final DeviceListEntry dle) {
 		DeviceListEntry cur = this.devicelist.headEntry;
