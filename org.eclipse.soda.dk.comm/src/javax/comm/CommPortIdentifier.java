@@ -168,8 +168,7 @@ public class CommPortIdentifier {
 	 * This method needs to be called when ownership of the port changes.
 	 */
 	void fireOwnershipEvent(final int eventType) {
-		final Iterator eventListeners = this.listeners.iterator();
-		while (eventListeners.hasNext()) {
+		for (final Iterator eventListeners = this.listeners.iterator(); eventListeners.hasNext();) {
 			final CommPortOwnershipListener listener = (CommPortOwnershipListener) eventListeners.next();
 			listener.ownershipChange(eventType);
 		}
