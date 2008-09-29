@@ -12,7 +12,7 @@ package org.eclipse.soda.dk.comm;
  ************************************************************************/
 /**
  * @author IBM
- * @version 1.1.0
+ * @version 1.2.0
  */
 class SerialStatusEventThread extends Thread {
 	/**
