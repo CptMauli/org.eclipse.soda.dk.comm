@@ -21,6 +21,7 @@ import java.util.*;
  * minimum required functionality for serial communications ports.
  * @author IBM
  * @version 1.2.0
+ * @since 1.0				
  */
 class NSSerialPort extends SerialPort {
 	/**

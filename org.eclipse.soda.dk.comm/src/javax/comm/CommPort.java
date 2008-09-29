@@ -15,6 +15,7 @@ import java.io.*;
 /**
  * @author IBM
  * @version 1.2.0
+ * @since 1.0				
  */
 public abstract class CommPort extends Object {
 	/**

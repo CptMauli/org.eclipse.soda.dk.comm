@@ -13,6 +13,7 @@ package org.eclipse.soda.dk.comm;
 /**
  * @author IBM
  * @version 1.2.0
+ * @since 1.0				
  */
 class ParallelErrorEventThread extends Thread {
 	/**

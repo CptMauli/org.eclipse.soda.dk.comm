@@ -21,6 +21,7 @@ import org.eclipse.soda.dk.comm.internal.Library;
 /**
  * @author IBM
  * @version 1.2.0
+ * @since 1.0				
  */
 public class NSCommDriver implements CommDriver {
 	static {
