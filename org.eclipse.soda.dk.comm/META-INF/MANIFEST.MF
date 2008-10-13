@@ -4,7 +4,8 @@ Bundle-Copyright: %bundle.copyright
 Bundle-Description: %bundle.description
 Bundle-Localization: OSGI-INF/l10n/bundle
 Bundle-Name: %bundle.name
-Bundle-SymbolicName: org.eclipse.soda.dk.comm
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.eclipse.soda.dk.comm;singleton:=true
 Bundle-Vendor: %bundle.vendor
 Bundle-Version: 1.2.0.qualifier
 Export-Package: javax.comm;version="1.2.0",
@@ -16,7 +17,4 @@ Import-Package: javax.comm;version="1.2.0",
  org.eclipse.soda.dk.comm.bundle;version="1.2.0",
  org.eclipse.soda.dk.comm.internal;version="1.2.0",
  org.osgi.framework;version="1.4.0"
-Provide-Package: 
- javax.comm;specification-version="1.0.0",
- org.eclipse.soda.dk.comm;specification-version="1.1.0",
- org.eclipse.soda.dk.comm.bundle;specification-version="1.1.0"
+
