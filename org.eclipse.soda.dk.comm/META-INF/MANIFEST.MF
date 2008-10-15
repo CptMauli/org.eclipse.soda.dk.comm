@@ -5,7 +5,7 @@ Bundle-Description: %bundle.description
 Bundle-Localization: OSGI-INF/l10n/bundle
 Bundle-Name: %bundle.name
 Bundle-ManifestVersion: 2
-Bundle-SymbolicName: org.eclipse.soda.dk.comm;singleton:=true
+Bundle-SymbolicName: org.eclipse.soda.dk.comm
 Bundle-Vendor: %bundle.vendor
 Bundle-Version: 1.2.0.qualifier
 Export-Package: javax.comm;version="1.2.0",
