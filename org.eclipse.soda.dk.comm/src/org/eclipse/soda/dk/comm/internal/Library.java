@@ -1,7 +1,7 @@
 package org.eclipse.soda.dk.comm.internal;
 
 /*************************************************************************
- * Copyright (c) 2007, 2008 IBM.                                         *
+ * Copyright (c) 2007, 2009 IBM.                                         *
  * All rights reserved. This program and the accompanying materials      *
  * are made available under the terms of the Eclipse Public License v1.0 *
  * which accompanies this distribution, and is available at              *
@@ -21,7 +21,7 @@ import java.util.zip.ZipInputStream;
 /**
  * @author IBM
  * @version 1.2.0
- * @since 1.0				
+ * @since 1.0
  */
 public class Library {
 	/**
@@ -89,7 +89,6 @@ public class Library {
 
 	/**
 	 * Load_from_java_lib_path and return the boolean result.
-	 * 
 	 * @return Results of the load_from_java_lib_path (<code>boolean</code>) value.
 	 */
 	private static boolean load_from_java_lib_path() {
@@ -103,13 +102,11 @@ public class Library {
 
 	/**
 	 * Perform unzip with the specified input and output parameters.
-	 * 
 	 * @param input
-	 *            The input (<code>BufferedInputStream</code>) parameter.
+	 *		The input (<code>BufferedInputStream</code>) parameter.
 	 * @param output
-	 *            The output (<code>BufferedOutputStream</code>) parameter.
-	 * @throws IOException
-	 *             IOException.
+	 *		The output (<code>BufferedOutputStream</code>) parameter.
+	 * @throws IOException IOException.
 	 */
 	private static void performUnzip(final BufferedInputStream input, final BufferedOutputStream output) throws IOException {
 		int block_size = 4000;
@@ -126,11 +123,10 @@ public class Library {
 
 	/**
 	 * Set bundlepath with the specified type and path parameters.
-	 * 
 	 * @param type
-	 *            The type (<code>String</code>) parameter.
+	 *		The type (<code>String</code>) parameter.
 	 * @param path
-	 *            The path (<code>String</code>) parameter.
+	 *		The path (<code>String</code>) parameter.
 	 */
 	public static void setBundlepath(final String type, final String path) {
 		pathtype = type;
@@ -139,22 +135,17 @@ public class Library {
 
 	/**
 	 * Unzip lib_http with the specified javalibpath, libpath, libname and url parameters.
-	 * 
 	 * @param javalibpath
-	 *            The javalibpath (<code>String</code>) parameter.
+	 *		The javalibpath (<code>String</code>) parameter.
 	 * @param libpath
-	 *            The libpath (<code>String</code>) parameter.
+	 *		The libpath (<code>String</code>) parameter.
 	 * @param libname
-	 *            The libname (<code>String</code>) parameter.
+	 *		The libname (<code>String</code>) parameter.
 	 * @param url
-	 *            The url (<code>String</code>) parameter.
-	 * @throws IOException
-	 *             IOException.
+	 *		The URL (<code>String</code>) parameter.
+	 * @throws IOException IOException.
 	 */
 	private static void unzipLib_http(final String javalibpath, final String libpath, final String libname, final String url) throws IOException {
-		/*
-		 * System.out.println("javalibpath=" + javalibpath); System.out.println("libpath=" + libpath); System.out.println("libname=" + libname); System.out.println("url=" + url);
-		 */
 		ZipInputStream zipInput = new ZipInputStream(new URL(url).openStream());
 		while (zipInput.available() != 0) {
 			try {
@@ -164,7 +155,7 @@ public class Library {
 					performUnzip(input, output);
 					break;
 				}
-			} catch (Exception e) {
+			} catch (final Exception e) {
 				break;
 			}
 		}
@@ -172,22 +163,17 @@ public class Library {
 
 	/**
 	 * Unzip lib_local with the specified javalibpath, libpath, libname and jarname parameters.
-	 * 
 	 * @param javalibpath
-	 *            The javalibpath (<code>String</code>) parameter.
+	 *		The javalibpath (<code>String</code>) parameter.
 	 * @param libpath
-	 *            The libpath (<code>String</code>) parameter.
+	 *		The libpath (<code>String</code>) parameter.
 	 * @param libname
-	 *            The libname (<code>String</code>) parameter.
+	 *		The libname (<code>String</code>) parameter.
 	 * @param jarname
-	 *            The jarname (<code>String</code>) parameter.
-	 * @throws IOException
-	 *             IOException.
+	 *		The jarname (<code>String</code>) parameter.
+	 * @throws IOException IOException.
 	 */
 	private static void unzipLib_local(final String javalibpath, final String libpath, final String libname, final String jarname) throws IOException {
-		/*
-		 * System.out.println("javalibpath=" + javalibpath); System.out.println("libpath=" + libpath); System.out.println("libname=" + libname); System.out.println("jarname=" + jarname);
-		 */
 		ZipFile bundleJar = new ZipFile(jarname);
 		BufferedInputStream input = new BufferedInputStream(bundleJar.getInputStream(bundleJar.getEntry(libpath + libname)));
 		BufferedOutputStream output = new BufferedOutputStream(new FileOutputStream(javalibpath + libname));

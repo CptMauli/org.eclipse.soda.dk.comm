@@ -1,7 +1,7 @@
 package javax.comm;
 
 /*************************************************************************
- * Copyright (c) 1999, 2008 IBM.                                         *
+ * Copyright (c) 1999, 2009 IBM.                                         *
  * All rights reserved. This program and the accompanying materials      *
  * are made available under the terms of the Eclipse Public License v1.0 *
  * which accompanies this distribution, and is available at              *
@@ -15,7 +15,7 @@ import java.io.*;
 /**
  * @author IBM
  * @version 1.2.0
- * @since 1.0				
+ * @since 1.0
  */
 public abstract class CommPort extends Object {
 	/**
@@ -189,7 +189,7 @@ public abstract class CommPort extends Object {
 			cport = null;
 		}
 		if (cport != null) {
-			pt = cport.getPortType() == CommPortIdentifier.PORT_SERIAL ? "SERIAL" : "PARALLEL";  //$NON-NLS-1$//$NON-NLS-2$
+			pt = cport.getPortType() == CommPortIdentifier.PORT_SERIAL ? "SERIAL" : "PARALLEL"; //$NON-NLS-1$//$NON-NLS-2$
 		} else {
 			pt = " "; //$NON-NLS-1$
 		}

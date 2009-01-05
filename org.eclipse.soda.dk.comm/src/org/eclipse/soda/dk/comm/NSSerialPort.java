@@ -1,7 +1,7 @@
 package org.eclipse.soda.dk.comm;
 
 /*************************************************************************
- * Copyright (c) 1999, 2008 IBM.                                         *
+ * Copyright (c) 1999, 2009 IBM.                                         *
  * All rights reserved. This program and the accompanying materials      *
  * are made available under the terms of the Eclipse Public License v1.0 *
  * which accompanies this distribution, and is available at              *
@@ -21,7 +21,7 @@ import java.util.*;
  * minimum required functionality for serial communications ports.
  * @author IBM
  * @version 1.2.0
- * @since 1.0				
+ * @since 1.0
  */
 class NSSerialPort extends SerialPort {
 	/**
@@ -200,7 +200,7 @@ class NSSerialPort extends SerialPort {
 	boolean rcvFramingByteReceived;
 
 	/**
-	 * Disable read buffering for now ********
+	 * Disable read buffering for now
 	 */
 	int insBufferSize = 0;
 
@@ -210,7 +210,7 @@ class NSSerialPort extends SerialPort {
 	int insBufferCount = 0;
 
 	/**
-	 * Disable write buffering for default ********
+	 * Disable write buffering for default
 	 */
 	int outsBufferSize = 0;
 
@@ -428,7 +428,6 @@ class NSSerialPort extends SerialPort {
 	 * @see #disableReceiveFraming()
 	 */
 	public void enableReceiveFraming(final int rcvFramingByte) throws UnsupportedCommOperationException {
-		/********* Disable receive framing for now *********/
 		throw new UnsupportedCommOperationException();
 	}
 
@@ -602,7 +601,6 @@ class NSSerialPort extends SerialPort {
 		if (this.ins != null) {
 			return this.ins;
 		}
-		/* Y: get a new deviceInputStream */
 		if ((this.ins = new NSDeviceInputStream(this, this.dle.portType)) == null) {
 			throw new IOException();
 		}
@@ -1196,20 +1194,7 @@ class NSSerialPort extends SerialPort {
 	private native void setDTRNC(final boolean dtr);
 
 	/**
-	 * Sets the flow control mode.
-	 * Parameters:
-	 * flow - control Can be a bitmask combination of
-	 * FLOWCONTROL_NONE: no flow control
-	 * FLOWCONTROL_RTSCTS_IN: RTS/CTS (hardware) flow control for input
-	 * FLOWCONTROL_RTSCTS_OUT: RTS/CTS (hardware) flow control for output
-	 * FLOWCONTROL_XONXOFF_IN: XON/XOFF (software) flow control for input
-	 * FLOWCONTROL_XONXOFF_OUT: XON/XOFF (software) flow control for output
-	 * Throws: UnsupportedCommOperationException
-	 * if any of the flow control mode was not supported by the underline OS,
-	 * or
-	 * if input and output flow control are set to different values, i.e. one
-	 * hardware and one software. The flow control mode will revert to the
-	 * value before the call was made.
+	 * Sets the flow control mode value.
 	 * @param flowctrl The flowctrl (<code>int</code>) parameter.
 	 * @throws UnsupportedCommOperationException Unsupported Comm Operation Exception.
 	 * @see #getFlowControlMode()
@@ -1252,7 +1237,7 @@ class NSSerialPort extends SerialPort {
 	 * @see #getInputBufferSize()
 	 */
 	public void setInputBufferSize(final int size) {
-		/********* Disable read buffering for now *********/
+		/* do nothing */
 	}
 
 	/**
